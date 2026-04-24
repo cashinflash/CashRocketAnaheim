@@ -5368,3 +5368,43 @@ h1, h2, h3, h4, h5, h6 {
   .pre-footer     { padding: 96px 0 !important; }
   .testimonials   { padding-top: 80px !important; }
 }
+
+
+/* ═════════════════════════════════════════════════════════════════════
+   LOGO SIZING v14 — bump for Cash Rocket wordmark (2.712:1 aspect)
+   The uploaded PNG is shorter/chunkier than CER's 3.56:1 original, so at
+   the same height it reads ~25% smaller. Bump heights across the board
+   so the logo occupies similar horizontal real estate to CER's.
+   ═════════════════════════════════════════════════════════════════════ */
+.site-header .logo img {
+  height: 96px !important;
+  max-height: 96px !important;
+  min-height: 64px !important;
+  max-width: none !important;
+}
+.mobile-menu-logo img,
+.mobile-menu-header img {
+  height: 76px !important;
+  max-height: 76px !important;
+  max-width: none !important;
+}
+.footer-bottom-left img,
+.pre-footer img {
+  height: 84px !important;
+  max-height: 84px !important;
+  max-width: none !important;
+}
+.site-header .header-inner { min-height: 112px !important; }
+
+@media (max-width: 700px) {
+  .site-header .logo img { height: 76px !important; max-height: 76px !important; }
+  .mobile-menu-logo img  { height: 64px !important; max-height: 64px !important; }
+  .footer-bottom-left img, .pre-footer img { height: 72px !important; max-height: 72px !important; }
+  .site-header .header-inner { min-height: 92px !important; }
+}
+@media (max-width: 480px) {
+  .site-header .logo img { height: 64px !important; max-height: 64px !important; }
+  .mobile-menu-logo img  { height: 56px !important; max-height: 56px !important; }
+  .footer-bottom-left img, .pre-footer img { height: 60px !important; max-height: 60px !important; }
+  .site-header .header-inner { min-height: 80px !important; }
+}
