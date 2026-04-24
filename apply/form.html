@@ -9,10 +9,10 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
 :root{
-  --green:#003DA5;--green-dark:#14377C;--green-mid:#003DA5;
+  --green:#003C71;--green-dark:#00254E;--green-mid:#003C71;
   --green-light:#F5F8FF;--green-border:#C9D6EC;
   --green-glow:rgba(0,61,165,.08);
-  --gold:#FFC52B;--gold-light:#FFF8E1;
+  --gold:#FF7900;--gold-light:#FFF8E1;
   --red:#c0392b;--red-light:#fdf2f2;--red-border:#f5b8b0;
   --bg:#F5F8FF;--surface:#fff;--surface2:#f8faf8;
   --border:#e5e5e5;--border2:#e5e5e5;
@@ -86,7 +86,7 @@ input.error,select.error{border-color:var(--red)}
 .plaid-area.show{display:block}
 .plaid-btn{width:100%;padding:16px;background:linear-gradient(135deg,#1a1a2e,#333);color:white;border:none;border-radius:50px;font-size:15px;font-weight:700;font-family:var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s}
 .plaid-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
-.plaid-btn.connected{background:#003DA5}
+.plaid-btn.connected{background:#003C71}
 .plaid-status{margin-top:10px;padding:12px 16px;border-radius:10px;font-size:13px;font-weight:600;display:none}
 .plaid-status.ok{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);display:flex;align-items:center;gap:8px}
 .plaid-status.err{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);display:block}
@@ -103,8 +103,8 @@ input.error,select.error{border-color:var(--red)}
 .file-ready{display:none;margin-top:10px;padding:10px 14px;background:white;border:1px solid var(--green-border);border-radius:10px;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--green)}
 
 /* SUBMIT */
-.submit-btn{width:100%;padding:18px;background:#003DA5;color:white;border:none;border-radius:50px;font-size:16px;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(255,197,43,.40);position:relative;overflow:hidden}
-.submit-btn:hover:not(:disabled){transform:translateY(-1px);background:#14377C;box-shadow:0 8px 28px rgba(255,197,43,.35)}
+.submit-btn{width:100%;padding:18px;background:#003C71;color:white;border:none;border-radius:50px;font-size:16px;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(255,197,43,.40);position:relative;overflow:hidden}
+.submit-btn:hover:not(:disabled){transform:translateY(-1px);background:#00254E;box-shadow:0 8px 28px rgba(255,197,43,.35)}
 .submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .submit-btn.loading{color:transparent}
 .submit-btn.loading::after{content:'';position:absolute;width:22px;height:22px;border:3px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;top:50%;left:50%;margin:-11px;animation:spin .7s linear infinite}
@@ -114,7 +114,7 @@ input.error,select.error{border-color:var(--red)}
 /* SUCCESS */
 .success-card{display:none;text-align:center;padding:3rem 2rem}
 .success-card.show{display:block}
-.success-icon{width:80px;height:80px;background:#003DA5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:36px}
+.success-icon{width:80px;height:80px;background:#003C71;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:36px}
 .success-title{font-size:26px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-.02em}
 .success-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:420px;margin:0 auto}
 
@@ -222,9 +222,9 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(255,197,43,.35
 @media(max-width:560px){.if-row-2{grid-template-columns:1fr}}
 .if-field{display:flex;flex-direction:column;margin-bottom:14px}
 .if-label{font-size:.85rem;font-weight:600;color:#1a1a2e;margin-bottom:6px;text-transform:none;letter-spacing:0}
-.if-label span[aria-hidden="true"]{color:#003DA5}
+.if-label span[aria-hidden="true"]{color:#003C71}
 .if-field input,.if-field select{height:44px;padding:0 12px;border:1px solid #d8dedb;border-radius:8px;font-size:.95rem;color:#1a1a2e;background:#fff;font-family:inherit;transition:border-color .15s ease,box-shadow .15s ease}
-.if-field input:focus,.if-field select:focus{outline:none;border-color:#003DA5;box-shadow:0 0 0 3px rgba(14,135,65,.14)}
+.if-field input:focus,.if-field select:focus{outline:none;border-color:#003C71;box-shadow:0 0 0 3px rgba(14,135,65,.14)}
 .if-field select:disabled{background:#f0f4f2;color:#1a1a2e;cursor:not-allowed;opacity:1;border-color:#d8dedb}
 .if-field select:disabled + .if-lock-note{display:block}
 .if-lock-note{display:none;font-size:.72rem;color:#6b7c72;margin-top:4px}
@@ -236,21 +236,35 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(255,197,43,.35
 .if-card-status.error{color:#8a1f1f;font-weight:600}
 .if-card-status.error::before{content:"⚠  "}
 .if-ack{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:#f7fafa;border:1px solid #e4e8e6;border-radius:8px;font-size:.9rem;color:#3a4a45;line-height:1.5;margin:6px 0 10px;cursor:pointer}
-.if-ack input{margin-top:3px;accent-color:#003DA5;flex:0 0 auto}
+.if-ack input{margin-top:3px;accent-color:#003C71;flex:0 0 auto}
 .if-opt-in{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid #d8dedb;border-radius:10px;background:#f8faf9;cursor:pointer;user-select:none;margin-bottom:14px}
-.if-opt-in input{margin-top:3px;accent-color:#003DA5;flex:0 0 auto}
+.if-opt-in input{margin-top:3px;accent-color:#003C71;flex:0 0 auto}
 .if-opt-in strong{display:block;font-size:.95rem;font-weight:700;color:#1a1a2e}
 .if-opt-in em{display:block;font-style:normal;color:#5a6a65;font-size:.85rem;margin-top:2px}
 </style>
 </head>
 <body>
+<div class="ce-blob-field" aria-hidden="true">
+  <!-- 5 yellow + 5 navy, mixed sizes, scattered across viewport + scroll -->
+  <div class="ce-blob b-large b-yellow b-1"></div>
+  <div class="ce-blob b-large b-navy   b-2"></div>
+  <div class="ce-blob b-large b-yellow b-3"></div>
+  <div class="ce-blob b-mid   b-navy   b-4"></div>
+  <div class="ce-blob b-mid   b-yellow b-5"></div>
+  <div class="ce-blob b-mid   b-navy   b-6"></div>
+  <div class="ce-blob b-mid   b-yellow b-7"></div>
+  <div class="ce-blob b-small b-yellow b-8"></div>
+  <div class="ce-blob b-small b-navy   b-9"></div>
+  <div class="ce-blob b-small b-navy   b-10"></div>
+</div>
+
 <div class="page">
   <div class="form-blob-1" aria-hidden="true"></div>
   <div class="form-blob-2" aria-hidden="true"></div>
 
   <!-- HEADER -->
   <div class="hdr">
-    <img class="hdr-logo" src="/logo.svg" alt="Cash Rocket Anaheim" onerror="this.style.display='none';document.querySelector('.hdr-logo-text').style.display='block'">
+    <img class="hdr-logo" src="https://cashrocketanaheim.com/images/logo.png" alt="Cash Rocket Anaheim" onerror="this.style.display='none';document.querySelector('.hdr-logo-text').style.display='block'">
     <div class="hdr-logo-text">Cash Rocket Anaheim</div>
     <div class="hdr-title" id="hdr-title">Apply for a Payday Loan</div>
     <div class="hdr-sub" id="hdr-sub">Fast approval · Up to $255 · California residents only</div>

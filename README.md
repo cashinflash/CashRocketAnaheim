@@ -18,7 +18,7 @@ round-trips content as JSON strings which corrupts woff2 bytes. The fonts
 need to be uploaded manually. Two easy options:
 
 **Option A — GitHub web UI (quickest):**
-1. Open the repo's `fonts/` folder on the `claude/setup-cash-rocket-repo-z2NxB` branch.
+1. Open the repo's `fonts/` folder on the `main` branch.
 2. Click "Add file → Upload files".
 3. Drag the 10 woff2 files (same ones cif-website already ships — copy from
    `cashinflash/Cif-website` at `/fonts/`).
@@ -35,7 +35,7 @@ poppins-800.woff2       poppins-800-ext.woff2
 
 **Option B — git clone + commit locally:**
 ```bash
-git clone -b claude/setup-cash-rocket-repo-z2NxB \
+git clone -b main \
   git@github.com:cashinflash/CashRocketAnaheim.git
 cd CashRocketAnaheim
 # Copy fonts from a local cif-website checkout (or download from

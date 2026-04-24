@@ -55,7 +55,7 @@ def send_notification(form_data, firebase_id):
 
   <!-- HEADER -->
   <div style="background:#ffffff;padding:24px 32px 20px;text-align:center;border-bottom:3px solid #1a6b3c">
-    <img src="https://apply.cashrocketanaheim.com/logo.svg"
+    <img src="https://cashrocketanaheim.com/images/logo.png"
          alt="Cash Rocket Anaheim" width="160" style="display:block;margin:0 auto 16px;height:auto">
     <div style="display:inline-block;background:#e8f5ee;border:1px solid #b2d9c0;border-radius:20px;padding:6px 16px">
       <span style="color:#1a6b3c;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">New Application Received</span>
