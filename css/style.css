@@ -5417,3 +5417,14 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 64px !important;
   }
 }
+
+
+/* ═════════════════════════════════════════════════════════════════════
+   FOOTER LOGO — white tint for contrast against dark footer background.
+   Cash Rocket Anaheim logo uses navy text which clashed; filter inverts
+   everything that is dark to white. Leaves the orange accent alone.
+   ═════════════════════════════════════════════════════════════════════ */
+.footer-bottom-left img,
+.site-footer .footer-bottom-left img {
+  filter: brightness(0) invert(1) !important;
+}

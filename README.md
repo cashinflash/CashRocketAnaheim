@@ -3,7 +3,7 @@
 Marketing website for **cashrocketanaheim.com** — an Anaheim-targeted ghost
 site feeding the shared Cash in Flash apply pipeline.
 
-- Legal entity: **Dhan Corporation** (Cash Rocket Anaheim is a marketing dba).
+- Legal entity: **Dhan Corp** (Cash Rocket Anaheim is a marketing dba).
 - Source-attribution slug: `cashrocket_anaheim` (stored in sessionStorage
   by apply.cashinflash.com and persisted on the backend as `source_site`).
 - Deploy target: **Netlify** (static, no build step).
@@ -55,9 +55,9 @@ See the table below.
 ## Placeholders (resolve before launch)
 | Token | What to fill in |
 |---|---|
-| `[[LICENSE_NUMBER]]` | CDFPI deferred-deposit license # (usually `10DFPI-NNNNNN`) |
+| `214840` | CDFPI deferred-deposit license # (usually `10DFPI-NNNNNN`) |
 | `[[NMLS_ID]]` | NMLS consumer access ID |
-| `[[YEAR_FOUNDED]]` | Copyright year (e.g. `2026`) |
+| `2026` | Copyright year (e.g. `2026`) |
 | `[[CONTACT_EMAIL]]` | Customer / legal-notices email |
 | `657-366-7776` | Toll-free support number |
 | `[[GA4_ID]]` | New Google Analytics 4 property id |
