@@ -59,7 +59,7 @@ See the table below.
 | `[[NMLS_ID]]` | NMLS consumer access ID |
 | `[[YEAR_FOUNDED]]` | Copyright year (e.g. `2026`) |
 | `[[CONTACT_EMAIL]]` | Customer / legal-notices email |
-| `[[CONTACT_PHONE]]` | Toll-free support number |
+| `657-366-7776` | Toll-free support number |
 | `[[GA4_ID]]` | New Google Analytics 4 property id |
 
 A find-and-replace across the repo will resolve them. Run
