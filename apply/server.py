@@ -1440,6 +1440,22 @@ class Handler(BaseHTTPRequestHandler):
                 self.wfile.write(body)
             except FileNotFoundError:
                 self.send_json(404, {'error': 'styles.css not found'})
+        elif self.path.split('?')[0] == '/site.css':
+            # Serve the marketing site's CSS from the apply origin so the
+            # apply landing header/nav/menu matches cashrocketanaheim.com
+            # pixel-for-pixel (same-origin avoids cross-origin caching /
+            # CSP surprises).
+            try:
+                with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'css', 'style.css'), encoding='utf-8') as f:
+                    body = f.read().encode('utf-8')
+                self.send_response(200)
+                self.send_header('Content-Type', 'text/css; charset=utf-8')
+                self.send_header('Content-Length', str(len(body)))
+                self.send_header('Cache-Control', 'public, max-age=300')
+                self.end_headers()
+                self.wfile.write(body)
+            except FileNotFoundError:
+                self.send_json(404, {'error': 'site.css not found'})
         elif self.path.split('?')[0] == '/script.js':
             try:
                 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'frontend', 'script.js'), encoding='utf-8') as f:
