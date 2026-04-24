@@ -1,0 +1,3 @@
+# Pre-launch embargo — counsel must sign off before indexing is re-enabled.
+User-agent: *
+Disallow: /

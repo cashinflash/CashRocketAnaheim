@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Connect Bank — Cash Rocket Anaheim</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<link rel="apple-touch-icon" href="/favicon.png?v=2">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+.card{text-align:center;max-width:340px;width:100%}
+.logo{font-size:22px;font-weight:800;color:#003DA5;margin-bottom:1.5rem}
+.icon{font-size:48px;margin-bottom:1rem}
+.title{font-size:20px;font-weight:700;color:#1a1a2e;margin-bottom:8px}
+.sub{font-size:14px;color:#777;line-height:1.6;margin-bottom:2rem}
+.btn{width:100%;padding:16px;background:#003DA5;color:white;border:none;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s}
+.btn:hover{background:#14377C}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.status{margin-top:16px;padding:12px 16px;border-radius:8px;font-size:14px;font-weight:600;display:none}
+.status.ok{background:#F5F8FF;color:#003DA5;border:1px solid #C9D6EC;display:block}
+.status.err{background:#fdf2f2;color:#c0392b;border:1px solid #f5b8b0;display:block}
+.close-note{margin-top:20px;font-size:13px;color:#777;display:none}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.spinner{width:20px;height:20px;border:3px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;display:inline-block;vertical-align:middle;margin-right:8px}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="card">
+  <div class="logo">Cash Rocket Anaheim</div>
+  <div class="icon">🏦</div>
+  <div class="title" id="ttl">Connect Your Bank Account</div>
+  <div class="sub" id="sub">Securely connect your bank account via Plaid to complete your loan application.</div>
+  <button class="btn" id="btn" onclick="launch()">Connect Bank Account</button>
+  <div class="status" id="status"></div>
+  <div class="close-note" id="close-note">You can now close this tab and return to your application.</div>
+</div>
+
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+<script>
+// Get params from URL
+const params = new URLSearchParams(window.location.search);
+const linkToken = params.get('token');
+const apiBase = params.get('api') || 'https://cashrocketanaheim-apply.onrender.com';
+
+function launch(){
+  const btn=document.getElementById('btn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spinner"></span> Opening...';
+
+  if(!linkToken){
+    showErr('Missing link token. Please go back and try again.');
+    return;
+  }
+
+  const handler = Plaid.create({
+    token: linkToken,
+    onLoad: ()=>{
+      btn.disabled=false;
+      btn.textContent='Connect Bank Account';
+    },
+    onSuccess: async(public_token, metadata)=>{
+      btn.disabled=true;
+      btn.innerHTML='<span class="spinner"></span> Connecting...';
+      try{
+        const r = await fetch(apiBase+'/plaid/exchange', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({public_token, link_token: linkToken, institution: metadata.institution?.name||''})
+        });
+        const d = await r.json();
+        if(d.asset_report_token){
+          document.getElementById('ttl').textContent='Bank Connected!';
+          document.getElementById('sub').textContent='Your bank account has been successfully connected.';
+          btn.style.display='none';
+          showOk('✓ '+(metadata.institution?.name||'Your bank')+' connected successfully!');
+          document.getElementById('close-note').style.display='block';
+        } else {
+          showErr('Connection completed but could not get report. Please try again.');
+        }
+      }catch(e){
+        showErr('Error: '+e.message);
+      }
+    },
+    onExit:(err, meta)=>{
+      btn.disabled=false;
+      btn.textContent='Connect Bank Account';
+      if(err) showErr('Connection cancelled. Tap the button to try again.');
+    }
+  });
+  handler.open();
+}
+
+function showOk(msg){const el=document.getElementById('status');el.className='status ok';el.textContent=msg;}
+function showErr(msg){const el=document.getElementById('status');el.className='status err';el.textContent=msg;document.getElementById('btn').disabled=false;document.getElementById('btn').textContent='Try Again';}
+
+// Auto-launch if token is present
+window.onload=()=>{ if(linkToken) launch(); };
+</script>
+</body>
+</html>

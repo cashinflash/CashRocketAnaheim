@@ -1,0 +1,5 @@
+{
+  "_meta": {
+    "description": "Live-editable overrides from the dashboard Review Queue. Overrides take precedence over entities.json. Promote entries back to entities.json periodically to keep git history clean."
+  }
+}

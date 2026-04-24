@@ -1,0 +1,86 @@
+# CashInFlash standard profile — seeded from v1 current thresholds so v2 starts
+# at parity and we can tune from real outcomes.
+#
+# This file is data. Analysts tune thresholds here without editing Python.
+
+tiers:
+  - { amount: 255, min_fcf: 350 }
+  - { amount: 200, min_fcf: 275 }
+  - { amount: 150, min_fcf: 210 }
+  - { amount: 100, min_fcf: 140 }
+
+# Hard declines override tier math. Any match = decline with that reason.
+# Order matters: the first matching reason is the primary reason shown to the
+# underwriter.
+hard_declines:
+  - id: reconciliation_failed
+    when: "reconciliation_error > 100"
+    reason: "Statement data unreliable — reconciliation error exceeds tolerance"
+  - id: wrong_account_only_transfers
+    when: "income_only_self_transfers"
+    reason: "Connected account only receives transfers from your other accounts (e.g., Chime/Cash App/Venmo). Your actual paycheck account wasn't linked. Please reapply and connect the bank where your direct deposit lands."
+  - id: no_verified_payroll_for_employment
+    when: "payroll_count == 0 AND stated_employment == 'Employment'"
+    reason: "No verified payroll deposits despite stated Employment"
+  - id: active_competing_loan
+    when: "fresh_loan_within_14d > 0"
+    reason: "Active competing loan disbursement within 14 days"
+  - id: cif_rollover_pattern
+    when: "cif_prior_repay_30d AND fresh_advance_within_7d"
+    reason: "Rollover pattern: prior CIF loan repaid then fresh fintech advance"
+  - id: wrong_account_type
+    when: "wrong_account_type_detected"
+    reason: "Connected account does not match stated account type — request checking"
+  - id: severe_fintech_stacking
+    when: "fintech_unique_count >= 5"
+    reason: "Active fintech stacking (5+ apps) exceeds safe threshold"
+  - id: overdraft_pattern
+    when: "nsf_count >= 3 OR negative_days >= 8"
+    reason: "Overdraft pattern: frequent NSFs or extended negative balance"
+  - id: negative_ending_balance
+    when: "ending_balance < 0"
+    reason: "Account ended statement period negative"
+  - id: stated_income_anomaly
+    when: "stated_income_anomaly_ratio > 3"
+    reason: "Stated income materially inconsistent with observed deposits"
+
+# Soft adjustments — drop tiers rather than decline outright.
+soft_adjustments:
+  - id: fintech_stacking_moderate
+    when: "fintech_unique_count >= 3 AND fintech_unique_count < 5"
+    effect: drop_1_tier
+  - id: dti_high
+    when: "dti >= 45 AND dti < 60"
+    effect: drop_1_tier
+  - id: dti_very_high
+    when: "dti >= 60"
+    effect: drop_2_tiers
+  - id: ending_balance_low
+    when: "ending_balance < 50 AND ending_balance >= 0"
+    effect: drop_1_tier
+  - id: avg_daily_balance_low
+    when: "avg_daily_balance < 50"
+    effect: drop_1_tier
+  - id: single_paycheck_only
+    when: "payroll_count == 1"
+    effect: flag_for_review
+  - id: same_day_cashout_high
+    when: "same_day_cashout_ratio >= 0.5"
+    effect: flag_for_review
+  - id: same_day_cashout_extreme
+    when: "same_day_cashout_ratio >= 0.75"
+    effect: drop_1_tier
+
+# Safety factor + baseline living (mirrors affordability/calculator.py).
+affordability:
+  safety_factor: 0.50
+  baseline_living_floor: 800
+  baseline_living_ratio: 0.18
+  large_p2p_threshold: 300
+
+# Data requirements — enforced upstream in cif-apply form flow.
+data_requirements:
+  min_statement_days: 60
+  preferred_statement_days: 90
+  require_checking_account: true
+  reject_savings_only: true

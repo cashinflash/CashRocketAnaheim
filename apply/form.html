@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Apply Now | Cash Rocket Anaheim</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+:root{
+  --green:#003DA5;--green-dark:#14377C;--green-mid:#003DA5;
+  --green-light:#F5F8FF;--green-border:#C9D6EC;
+  --green-glow:rgba(0,61,165,.08);
+  --gold:#FFC52B;--gold-light:#FFF8E1;
+  --red:#c0392b;--red-light:#fdf2f2;--red-border:#f5b8b0;
+  --bg:#F5F8FF;--surface:#fff;--surface2:#f8faf8;
+  --border:#e5e5e5;--border2:#e5e5e5;
+  --text:#1a1a2e;--text2:#555;--muted:#777;
+  --sans:'Poppins',sans-serif;
+  --shadow-sm:0 2px 12px rgba(0,0,0,.06);
+  --shadow-md:0 4px 20px rgba(0,61,165,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+button,input,select,textarea{-webkit-tap-highlight-color:transparent}
+body{background:linear-gradient(160deg,#F5F8FF 0%,#EFF3FC 40%,#fff 100%);font-family:var(--sans);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.page{max-width:680px;margin:0 auto;padding:2rem 1.25rem 4rem;position:relative;overflow:hidden}
+
+/* HEADER */
+.hdr{text-align:center;margin-bottom:2.5rem}
+.hdr-logo{height:52px;object-fit:contain;margin-bottom:1rem}
+.hdr-logo-text{font-size:26px;font-weight:800;color:var(--green);margin-bottom:1rem;display:none}
+.hdr-title{font-size:28px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:6px}
+.hdr-sub{font-size:14px;color:var(--muted)}
+.lang-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border2);border-radius:20px;overflow:hidden;margin-top:14px}
+.lang-btn{padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:var(--sans);transition:all .15s}
+.lang-btn.active{background:var(--green);color:white}
+
+/* PROGRESS */
+.progress{display:flex;align-items:center;margin-bottom:2rem;gap:0}
+.step{display:flex;align-items:center;gap:8px;flex:1}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;transition:all .3s}
+.step-num.done{background:var(--green);color:white}
+.step-num.active{background:var(--green);color:white;box-shadow:0 0 0 4px rgba(0,61,165,.15)}
+.step-num.todo{background:var(--border);color:var(--muted)}
+.step-label{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.step-label.active{color:var(--green)}
+.step-line{flex:1;height:3px;background:var(--border);margin:0 6px;transition:background .3s}
+.step-line.done{background:var(--green)}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:1.25rem;box-shadow:var(--shadow-sm)}
+.card-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.card-title-icon{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;background:var(--green-light)}
+
+/* FORM */
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row.full{grid-template-columns:1fr}
+.row.three{grid-template-columns:1fr 1fr 1fr}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+label{font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em}
+.req{color:var(--red)}
+input,select,textarea{border:1.5px solid var(--border2);border-radius:12px;padding:11px 14px;font-size:15px;font-family:var(--sans);color:var(--text);background:var(--surface);transition:border-color .15s;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);background:white}
+input.error,select.error{border-color:var(--red)}
+.err-msg{font-size:12px;color:var(--red);font-weight:500;display:none}
+.err-msg.show{display:block}
+.hint{font-size:12px;color:var(--muted);margin-top:3px}
+
+/* BANK OPTIONS */
+.bank-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.bank-opt{border:2px solid var(--border2);border-radius:16px;padding:18px 16px;cursor:pointer;transition:all .2s;text-align:center;background:var(--surface)}
+.bank-opt:hover{border-color:var(--green-border);background:var(--green-light);box-shadow:0 4px 16px rgba(255,197,43,.35)}
+.bank-opt.selected{border-color:var(--green);background:var(--green-light)}
+.bank-opt.disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+.bank-opt-icon{font-size:28px;margin-bottom:8px}
+.bank-opt-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.bank-opt-sub{font-size:12px;color:var(--muted)}
+.bank-opt-badge{display:inline-block;background:var(--green);color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.unavail-badge{display:inline-block;background:var(--border);color:var(--muted);font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:6px;text-transform:uppercase}
+
+/* PLAID */
+.plaid-area{display:none;margin-top:16px}
+.plaid-area.show{display:block}
+.plaid-btn{width:100%;padding:16px;background:linear-gradient(135deg,#1a1a2e,#333);color:white;border:none;border-radius:50px;font-size:15px;font-weight:700;font-family:var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s}
+.plaid-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.plaid-btn.connected{background:#003DA5}
+.plaid-status{margin-top:10px;padding:12px 16px;border-radius:10px;font-size:13px;font-weight:600;display:none}
+.plaid-status.ok{background:var(--green-light);color:var(--green);border:1px solid var(--green-border);display:flex;align-items:center;gap:8px}
+.plaid-status.err{background:var(--red-light);color:var(--red);border:1px solid var(--red-border);display:block}
+
+/* PDF UPLOAD */
+.upload-area{display:none;margin-top:16px}
+.upload-area.show{display:block}
+.dz{border:2px dashed var(--green-border);border-radius:12px;padding:2.5rem 1.5rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--green-light);position:relative}
+.dz:hover,.dz.over{border-color:var(--green);background:#dff5e8}
+.dz input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.dz-icon{font-size:32px;margin-bottom:10px}
+.dz-title{font-size:14px;font-weight:600;color:var(--green);margin-bottom:4px}
+.dz-sub{font-size:12px;color:var(--muted)}
+.file-ready{display:none;margin-top:10px;padding:10px 14px;background:white;border:1px solid var(--green-border);border-radius:10px;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--green)}
+
+/* SUBMIT */
+.submit-btn{width:100%;padding:18px;background:#003DA5;color:white;border:none;border-radius:50px;font-size:16px;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(255,197,43,.40);position:relative;overflow:hidden}
+.submit-btn:hover:not(:disabled){transform:translateY(-1px);background:#14377C;box-shadow:0 8px 28px rgba(255,197,43,.35)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.submit-btn.loading{color:transparent}
+.submit-btn.loading::after{content:'';position:absolute;width:22px;height:22px;border:3px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;top:50%;left:50%;margin:-11px;animation:spin .7s linear infinite}
+.back-btn{width:100%;padding:14px;background:white;color:#1a1a2e;border:2px solid #1a1a2e;border-radius:50px;font-size:15px;font-weight:600;font-family:var(--sans);cursor:pointer;margin-bottom:10px;transition:all .2s}
+.back-btn:hover{background:#1a1a2e;color:#fff}
+
+/* SUCCESS */
+.success-card{display:none;text-align:center;padding:3rem 2rem}
+.success-card.show{display:block}
+.success-icon{width:80px;height:80px;background:#003DA5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:36px}
+.success-title{font-size:26px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-.02em}
+.success-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:420px;margin:0 auto}
+
+/* REVIEW */
+.review-section{margin-bottom:18px}
+.review-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.review-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+.review-row:last-child{border-bottom:none}
+.review-key{color:var(--muted);font-weight:500}
+.review-val{font-weight:600;color:var(--text);text-align:right;max-width:60%}
+
+/* LOAN AMOUNT */
+.loan-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.chip{padding:8px 18px;border-radius:50px;border:1.5px solid var(--border2);background:white;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.chip:hover{border-color:var(--green-border);background:var(--green-light)}
+.chip.selected{background:var(--green);border-color:var(--green);color:white}
+
+/* SECURITY */
+.security-bar{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:1.5rem;font-size:12px;color:var(--muted)}
+
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease}
+.fade-up .card:nth-child(2){animation:fadeUp .6s ease .1s both}
+.fade-up .card:nth-child(3){animation:fadeUp .6s ease .2s both}
+
+/* FLOATING BLOBS */
+@keyframes floatBlob{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  33%{transform:translateY(-15px) rotate(3deg)}
+  66%{transform:translateY(8px) rotate(-2deg)}
+}
+.page::before,.page::after{content:'';position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.page::before{width:200px;height:200px;background:rgba(0,61,165,.05);top:8%;right:-60px;border-radius:40% 60% 50% 50%/50% 40% 60% 50%;animation:floatBlob 10s ease-in-out infinite}
+.page::after{width:140px;height:130px;background:rgba(0,61,165,.08);bottom:15%;left:-50px;border-radius:50% 40% 60% 50%/40% 50% 50% 60%;animation:floatBlob 12s ease-in-out infinite -5s}
+.form-blob-1{position:absolute;width:150px;height:150px;background:rgba(255,197,43,.24);border-radius:30% 70% 60% 40%/50% 30% 70% 50%;top:25%;left:65%;animation:floatBlob 8s ease-in-out infinite -2s;pointer-events:none;z-index:0}
+.form-blob-2{position:absolute;width:90px;height:90px;background:rgba(0,61,165,.08);border-radius:60% 40% 50% 50%/40% 60% 40% 60%;bottom:35%;left:-3%;animation:floatBlob 11s ease-in-out infinite -7s;pointer-events:none;z-index:0}
+.hdr,.progress,.card,.step-btns,.consent-box,.security-bar,.success-card{position:relative;z-index:1}
+
+/* CARD HOVER */
+.card{transition:box-shadow .2s,border-color .2s}
+.card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(255,197,43,.35)}
+
+/* INPUT FOCUS GLOW */
+input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(255,197,43,.35)}
+
+/* PROGRESS BAR POLISH */
+@keyframes stepDone{0%{transform:scale(.8)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+.step-num.done{animation:stepDone .3s ease}
+
+/* SUCCESS GLOW */
+.success-card.show{animation:fadeUp .6s ease}
+.success-icon{box-shadow:0 0 0 12px rgba(255,197,43,.35),0 0 0 24px rgba(0,61,165,.05)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .page{padding:1.5rem 1rem 3rem}
+  .hdr-title{font-size:24px}
+  .card{padding:22px}
+  .step-label{display:none}
+  input,select,textarea{min-height:48px;font-size:16px}
+  .submit-btn{min-height:52px}
+  .back-btn,.chip,.lang-btn{min-height:44px}
+  .page::before{width:120px;height:120px}
+  .page::after{width:90px;height:80px}
+  .form-blob-1{width:100px;height:100px}
+  .form-blob-2{display:none}
+}
+@media(max-width:480px){
+  .page{padding:1.25rem .875rem 2.5rem}
+  .hdr-title{font-size:22px}
+  .hdr-sub{font-size:13px}
+  .card{padding:18px;border-radius:14px}
+  .card-title{font-size:15px}
+  .row{grid-template-columns:1fr}
+  .row.three{grid-template-columns:1fr 1fr}
+  .bank-opts{grid-template-columns:1fr}
+  .review-row{flex-direction:column;gap:2px}
+  .review-val{text-align:left;max-width:100%}
+  .page::before{width:80px;height:80px}
+  .page::after{width:60px;height:50px}
+  .form-blob-1{display:none}
+}
+@media(max-width:360px){
+  .page{padding:1rem .75rem 2rem}
+  .card{padding:14px}
+  .loan-chips{flex-direction:column}
+  .chip{width:100%;text-align:center}
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* Instant Funding card step — mirrors cashrocketanaheim.com/if */
+.if-trust{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:#f0f7f2;border:1px solid #c5e1d0;border-radius:10px;margin-bottom:14px;font-size:.88rem;color:#0a5d2e;line-height:1.5}
+.if-trust svg{flex:0 0 auto;margin-top:2px}
+.if-section-title{font-size:1rem;font-weight:700;color:#1a1a2e;margin:18px 0 8px}
+.if-section-title:first-child{margin-top:4px}
+.if-bullets{list-style:disc;padding-left:20px;margin:0 0 12px;color:#3a4a45;font-size:.92rem;line-height:1.6}
+.if-bullets li{margin-bottom:6px}
+.if-bullets li strong{color:#1a1a2e}
+.if-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:4px}
+@media(max-width:560px){.if-row-2{grid-template-columns:1fr}}
+.if-field{display:flex;flex-direction:column;margin-bottom:14px}
+.if-label{font-size:.85rem;font-weight:600;color:#1a1a2e;margin-bottom:6px;text-transform:none;letter-spacing:0}
+.if-label span[aria-hidden="true"]{color:#003DA5}
+.if-field input,.if-field select{height:44px;padding:0 12px;border:1px solid #d8dedb;border-radius:8px;font-size:.95rem;color:#1a1a2e;background:#fff;font-family:inherit;transition:border-color .15s ease,box-shadow .15s ease}
+.if-field input:focus,.if-field select:focus{outline:none;border-color:#003DA5;box-shadow:0 0 0 3px rgba(14,135,65,.14)}
+.if-field select:disabled{background:#f0f4f2;color:#1a1a2e;cursor:not-allowed;opacity:1;border-color:#d8dedb}
+.if-field select:disabled + .if-lock-note{display:block}
+.if-lock-note{display:none;font-size:.72rem;color:#6b7c72;margin-top:4px}
+.if-card-status{display:block;min-height:18px;margin-top:6px;font-size:.82rem;font-weight:500;line-height:1.3}
+.if-card-status.checking{color:#6b7c72}
+.if-card-status.success{color:#0a5d2e}
+.if-card-status.success::before{content:"✓  ";font-weight:700}
+.if-card-status.neutral{color:#3a4a45}
+.if-card-status.error{color:#8a1f1f;font-weight:600}
+.if-card-status.error::before{content:"⚠  "}
+.if-ack{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:#f7fafa;border:1px solid #e4e8e6;border-radius:8px;font-size:.9rem;color:#3a4a45;line-height:1.5;margin:6px 0 10px;cursor:pointer}
+.if-ack input{margin-top:3px;accent-color:#003DA5;flex:0 0 auto}
+.if-opt-in{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid #d8dedb;border-radius:10px;background:#f8faf9;cursor:pointer;user-select:none;margin-bottom:14px}
+.if-opt-in input{margin-top:3px;accent-color:#003DA5;flex:0 0 auto}
+.if-opt-in strong{display:block;font-size:.95rem;font-weight:700;color:#1a1a2e}
+.if-opt-in em{display:block;font-style:normal;color:#5a6a65;font-size:.85rem;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="form-blob-1" aria-hidden="true"></div>
+  <div class="form-blob-2" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <img class="hdr-logo" src="/logo.svg" alt="Cash Rocket Anaheim" onerror="this.style.display='none';document.querySelector('.hdr-logo-text').style.display='block'">
+    <div class="hdr-logo-text">Cash Rocket Anaheim</div>
+    <div class="hdr-title" id="hdr-title">Apply for a Payday Loan</div>
+    <div class="hdr-sub" id="hdr-sub">Fast approval · Up to $255 · California residents only</div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en',this)">English</button>
+      <button class="lang-btn" onclick="setLang('es',this)">Español</button>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress" id="progress">
+    <div class="step">
+      <div class="step-num active" id="sn1">1</div>
+      <div class="step-label active" id="sl1" data-en="Personal Info" data-es="Información Personal">Personal Info</div>
+    </div>
+    <div class="step-line" id="line1"></div>
+    <div class="step">
+      <div class="step-num todo" id="sn2">2</div>
+      <div class="step-label" id="sl2" data-en="Employment" data-es="Empleo">Employment</div>
+    </div>
+    <div class="step-line" id="line2"></div>
+    <div class="step">
+      <div class="step-num todo" id="sn3">3</div>
+      <div class="step-label" id="sl3" data-en="Bank Verification" data-es="Verificación Bancaria">Bank Verification</div>
+    </div>
+    <div class="step-line" id="line3"></div>
+    <div class="step">
+      <div class="step-num todo" id="sn4">4</div>
+      <div class="step-label" id="sl4" data-en="Debit Card" data-es="Tarjeta de Débito">Debit Card</div>
+    </div>
+    <div class="step-line" id="line4"></div>
+    <div class="step">
+      <div class="step-num todo" id="sn5">5</div>
+      <div class="step-label" id="sl5" data-en="Review" data-es="Revisión">Review</div>
+    </div>
+  </div>
+
+  <!-- STEP 1: Personal Info -->
+  <div id="step1" class="fade-up">
+    <div class="card">
+      <div class="card-title"><div class="card-title-icon">👤</div><span id="t-personal">Personal Information</span></div>
+      <div class="row">
+        <div class="field">
+          <label id="l-fname">First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="John">
+          <div class="err-msg" id="e-firstName" data-en="Required" data-es="Requerido">Required</div>
+        </div>
+        <div class="field">
+          <label id="l-lname">Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" placeholder="Smith">
+          <div class="err-msg" id="e-lastName" data-en="Required" data-es="Requerido">Required</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label id="l-dob">Date of Birth <span class="req">*</span></label>
+          <input type="date" id="dob">
+          <div class="err-msg" id="e-dob" data-en="Required" data-es="Requerido">Required</div>
+        </div>
+        <div class="field">
+          <label id="l-ssn">SSN (Last 4) <span class="req">*</span></label>
+          <input type="text" id="ssn" placeholder="1234" maxlength="4" inputmode="numeric">
+          <div class="err-msg" id="e-ssn" data-en="Enter last 4 digits" data-es="Ingrese los últimos 4 dígitos">Enter last 4 digits</div>
+        </div>
+      </div>
+      <div class="row full">
+        <div class="field">
+          <label id="l-address">Street Address <span class="req">*</span></label>
+          <input type="text" id="address" placeholder="123 Main St, Apt 4">
+          <div class="err-msg" id="e-address" data-en="Required" data-es="Requerido">Required</div>
+        </div>
+      </div>
+      <div class="row three">
+        <div class="field">
+          <label id="l-city">City <span class="req">*</span></label>
+          <input type="text" id="city" placeholder="Los Angeles">
+          <div class="err-msg" id="e-city" data-en="Required" data-es="Requerido">Required</div>
+        </div>
+        <div class="field">
+          <label id="l-state">State <span class="req">*</span></label>
+          <select id="state">
+            <option value="">CA</option>
+            <option value="CA" selected>CA</option>
+          </select>
+        </div>
+        <div class="field">
+          <label id="l-zip">ZIP <span class="req">*</span></label>
+          <input type="text" id="zip" placeholder="90001" maxlength="5" inputmode="numeric">
+          <div class="err-msg" id="e-zip" data-en="Enter 5-digit ZIP" data-es="Ingrese el ZIP de 5 dígitos">Enter 5-digit ZIP</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label id="l-phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="(213) 555-0192" inputmode="tel">
+          <div class="err-msg" id="e-phone" data-en="Enter valid phone" data-es="Ingrese un teléfono válido">Enter valid phone</div>
+        </div>
+        <div class="field">
+          <label id="l-email">Email <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="john@email.com">
+          <div class="err-msg" id="e-email" data-en="Enter valid email" data-es="Ingrese un email válido">Enter valid email</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><div class="card-title-icon">💰</div><span id="t-loan">Loan Request</span></div>
+      <div class="field">
+        <label id="l-loanamt">How much would you like to borrow? <span class="req">*</span></label>
+        <div class="loan-chips">
+          <button class="chip" onclick="selectAmount(100,this)">$100</button>
+          <button class="chip" onclick="selectAmount(150,this)">$150</button>
+          <button class="chip" onclick="selectAmount(200,this)">$200</button>
+          <button class="chip" onclick="selectAmount(255,this)">$255</button>
+        </div>
+        <input type="hidden" id="loanAmount">
+        <div class="err-msg" id="e-loanAmount" data-en="Please select an amount" data-es="Por favor seleccione un monto">Please select an amount</div>
+      </div>
+      <div class="field" style="margin-top:14px">
+        <label id="l-purpose">Loan Purpose</label>
+        <select id="loanPurpose">
+          <option value="" id="lo-select">Select purpose...</option>
+          <option value="Rent/Housing" id="lo-rent">Rent / Housing</option>
+          <option value="Utilities" id="lo-util">Utilities</option>
+          <option value="Food/Groceries" id="lo-food">Food / Groceries</option>
+          <option value="Transportation" id="lo-trans">Transportation</option>
+          <option value="Medical" id="lo-med">Medical</option>
+          <option value="Other" id="lo-other">Other</option>
+        </select>
+      </div>
+    </div>
+    <button class="submit-btn" onclick="nextStep(1)" id="btn1">
+      <span id="btn1-text">Continue to Employment →</span>
+    </button>
+    <div class="security-bar">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span id="sec-text">256-bit SSL encrypted · Your information is secure</span>
+    </div>
+  </div>
+
+  <!-- STEP 2: Employment -->
+  <div id="step2" style="display:none">
+    <div class="card fade-up">
+      <div class="card-title"><div class="card-title-icon">💼</div><span id="t-employ">Employment & Income</span></div>
+      <div class="field">
+        <label id="l-empstatus">Employment Status <span class="req">*</span></label>
+        <select id="employmentStatus" onchange="toggleEmployer()">
+          <option value="" id="es-select">Select...</option>
+          <option value="Full-Time Employed" id="es-ft">Full-Time Employed</option>
+          <option value="Part-Time Employed" id="es-pt">Part-Time Employed</option>
+          <option value="Self-Employed" id="es-se">Self-Employed</option>
+          <option value="Government Benefits" id="es-gb">Government Benefits (SSI/SSDI/Disability)</option>
+          <option value="Pension/Retirement" id="es-pen">Pension / Retirement</option>
+          <option value="Gig Worker" id="es-gig">Gig Worker (Uber, DoorDash, etc.)</option>
+          <option value="Other Income" id="es-oth">Other Verifiable Income</option>
+        </select>
+        <div class="err-msg" id="e-employmentStatus" data-en="Required" data-es="Requerido">Required</div>
+      </div>
+      <div class="field" id="employer-field">
+        <label id="l-employer">Employer / Income Source <span class="req">*</span></label>
+        <input type="text" id="employer" placeholder="Company or income source name">
+        <div class="err-msg" id="e-employer" data-en="Required" data-es="Requerido">Required</div>
+      </div>
+      <div class="field">
+        <label id="l-income">Monthly Net Income (after taxes) <span class="req">*</span></label>
+        <div style="position:relative">
+          <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:600;color:var(--muted)">$</span>
+          <input type="number" id="monthlyIncome" placeholder="2500" style="padding-left:28px" inputmode="decimal">
+        </div>
+        <div class="err-msg" id="e-monthlyIncome" data-en="Required" data-es="Requerido">Required</div>
+      </div>
+      <div class="field">
+        <label id="l-payday">Pay Frequency <span class="req">*</span></label>
+        <select id="payFrequency">
+          <option value="" id="pf-select">Select...</option>
+          <option value="Weekly" id="pf-wk">Weekly</option>
+          <option value="Bi-Weekly" id="pf-biwk">Bi-Weekly</option>
+          <option value="Semi-Monthly" id="pf-sm">Semi-Monthly (1st and 15th)</option>
+          <option value="Monthly" id="pf-mo">Monthly</option>
+          <option value="Irregular" id="pf-irr">Irregular</option>
+        </select>
+        <div class="err-msg" id="e-payFrequency" data-en="Required" data-es="Requerido">Required</div>
+      </div>
+    </div>
+    <button class="submit-btn" onclick="nextStep(2)"><span id="btn2-text">Continue to Bank Verification →</span></button>
+    <button class="back-btn" onclick="goBack(1)" id="back2"><span id="back2-text">← Back</span></button>
+  </div>
+
+  <!-- STEP 3: Bank Verification -->
+  <div id="step3" style="display:none">
+    <div class="card fade-up">
+      <div class="card-title"><div class="card-title-icon">🏦</div><span id="t-bank">Bank Verification</span></div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:18px" id="bank-sub">We need to verify your bank account to process your application.</p>
+
+      <div class="bank-opts" id="bank-opts">
+        <div class="bank-opt" id="opt-plaid" onclick="selectBank('plaid',this)">
+          <div class="bank-opt-badge" id="badge-recommended">Recommended</div>
+          <div class="bank-opt-icon">⚡</div>
+          <div class="bank-opt-title" id="t-plaid-title">Connect Bank Account</div>
+          <div class="bank-opt-sub" id="t-plaid-sub">Instant & secure via Plaid</div>
+        </div>
+        <div class="bank-opt" id="opt-pdf" onclick="selectBank('pdf',this)">
+          <div class="unavail-badge" id="badge-upload" style="display:none">Upload</div>
+          <div class="bank-opt-icon">📄</div>
+          <div class="bank-opt-title" id="t-pdf-title">Upload Bank Statement</div>
+          <div class="bank-opt-sub" id="t-pdf-sub">PDF from last 30 days</div>
+        </div>
+      </div>
+
+      <!-- Plaid area -->
+      <div class="plaid-area" id="plaid-area">
+        <button class="plaid-btn" id="plaid-btn" onclick="launchPlaid()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span id="plaid-btn-text">Connect with Plaid</span>
+        </button>
+        <div class="plaid-status" id="plaid-status"></div>
+      </div>
+
+      <!-- PDF Upload area -->
+      <div class="upload-area" id="upload-area">
+        <div class="dz" id="dz">
+          <input type="file" id="pdf-input" accept=".pdf" onchange="handlePDF(this)">
+          <div class="dz-icon">📂</div>
+          <div class="dz-title" id="t-dz-title">Drop your bank statement here</div>
+          <div class="dz-sub" id="t-dz-sub">PDF format only · Last 30 days</div>
+        </div>
+        <div class="file-ready" id="file-ready">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span id="file-name"></span>
+        </div>
+      </div>
+
+      <div class="err-msg" id="e-bank" data-en="Please connect your bank or upload a statement" data-es="Por favor conecte su banco o suba un estado de cuenta" style="margin-top:12px">Please connect your bank or upload a statement</div>
+    </div>
+    <button class="submit-btn" onclick="nextStep(3)"><span id="btn3-text">Continue to Debit Card →</span></button>
+    <button class="back-btn" onclick="goBack(2)"><span id="back3-text">← Back</span></button>
+  </div>
+
+  <!-- STEP 4 (NEW): Debit Card (optional) -->
+  <div id="step4" style="display:none">
+    <div class="card fade-up">
+      <div class="card-title"><div class="card-title-icon">💳</div><span id="t-card">Debit Card for Instant Funding</span></div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px" id="card-sub">If approved, we can send your loan proceeds directly to a debit card. This step is optional — skip it to set up funding after approval.</p>
+
+      <div class="if-trust" role="note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span id="t-card-trust">Your information is secure. Card details are submitted directly to our PCI-compliant vault. Cash Rocket Anaheim does not see, process, or store your card number on this website.</span>
+      </div>
+
+      <label class="if-opt-in" for="card-opt-in">
+        <input type="checkbox" id="card-opt-in" onchange="toggleCardFields()">
+        <span>
+          <strong id="t-card-opt-in">Yes, I'd like instant debit-card funding</strong>
+          <em id="t-card-opt-in-sub">Fill in your debit card now so approved funds can be pushed to it within minutes.</em>
+        </span>
+      </label>
+
+      <div id="card-fields" style="display:none">
+        <h2 class="if-section-title" id="t-sec-purpose">Purpose of Authorization</h2>
+        <p style="color:#3a4a45;line-height:1.6;font-size:.94rem;margin:0 0 10px" id="t-purpose-body">By checking the box above and submitting this form, I authorize <strong>Cash Rocket Anaheim</strong> ("Lender") and its payment service provider(s) to transmit a one-time credit (push-to-card) transaction to the debit card identified below in order to deliver my loan proceeds for a California Deferred Deposit Transaction ("payday loan").</p>
+        <ul class="if-bullets">
+          <li id="t-purpose-li-1">This Authorization is <strong>OPTIONAL</strong> and is not required to obtain credit. If I do not want debit-card funding, I may choose another lawful disbursement method offered by Lender.</li>
+          <li id="t-purpose-li-2">This Authorization is for <strong>DISBURSEMENT ONLY</strong>. It is <strong>NOT</strong> authorization for Lender to debit my debit card for repayment, fees, or any other purpose.</li>
+          <li id="t-purpose-li-3">I represent that I am an authorized user of the debit card and have legal authority to receive funds to this card.</li>
+        </ul>
+
+        <h2 class="if-section-title" id="t-sec-how">How Instant Debit Card Funding Works</h2>
+        <ul class="if-bullets">
+          <li id="t-how-li-1">Lender will initiate a one-time push-to-card credit for the amount of my loan proceeds shown in my loan agreement.</li>
+          <li id="t-how-li-2">Funds availability depends on my debit card issuer, payment network rules, system availability, and fraud/security controls.</li>
+          <li id="t-how-li-3">Instant funding is often completed within minutes, but Lender cannot guarantee that funds will be available within any specific time.</li>
+          <li id="t-how-li-4">My debit card may be ineligible or the transfer may be rejected or reversed. If that occurs, Lender will contact me to arrange an alternate lawful disbursement method.</li>
+          <li id="t-how-li-5">I understand Lender will not request my debit card PIN, and I should not provide my PIN to anyone.</li>
+        </ul>
+
+        <h2 class="if-section-title" id="t-sec-fees">Fees and Limits</h2>
+        <ul class="if-bullets">
+          <li id="t-fees-li-1">Lender does not charge an additional fee solely for delivering loan proceeds to my debit card.</li>
+          <li id="t-fees-li-2">My card issuer or financial institution may charge fees or impose limits (including transaction limits) that are not controlled by Lender.</li>
+        </ul>
+
+        <h2 class="if-section-title" id="t-sec-cancel">Cancellation Rights</h2>
+        <p style="color:#3a4a45;line-height:1.6;font-size:.94rem;margin:0 0 14px" id="t-cancel-body">I may revoke this Authorization by providing notice to Lender before Lender initiates the debit card disbursement. If the transfer has already been initiated, revocation may not stop the transfer. Revoking this Authorization does not cancel my loan obligation; it only changes how the loan proceeds are disbursed.</p>
+
+        <h2 class="if-section-title" id="t-sec-card">Card Details</h2>
+
+        <div class="if-row-2">
+          <div class="if-field">
+            <label class="if-label" for="cardFirst" id="l-card-first">Cardholder — First name <span aria-hidden="true">*</span></label>
+            <input type="text" id="cardFirst" autocomplete="cc-given-name" maxlength="60">
+          </div>
+          <div class="if-field">
+            <label class="if-label" for="cardLast" id="l-card-last">Cardholder — Last name <span aria-hidden="true">*</span></label>
+            <input type="text" id="cardLast" autocomplete="cc-family-name" maxlength="60">
+          </div>
+        </div>
+
+        <div class="if-field">
+          <label class="if-label" for="cardNumber" id="l-card-number">Debit card number <span aria-hidden="true">*</span></label>
+          <input type="text" id="cardNumber" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="1234 5678 9012 3456" oninput="onCardNumberInput()">
+          <small class="if-card-status" id="card-status" aria-live="polite"></small>
+        </div>
+
+        <div class="if-row-2">
+          <div class="if-field">
+            <label class="if-label" for="cardType" id="l-card-type">Debit card type <span aria-hidden="true">*</span></label>
+            <select id="cardType" disabled>
+              <option value="">Auto-detected</option>
+              <option>Visa</option>
+              <option>MasterCard</option>
+              <option>Discover</option>
+              <option>Amex</option>
+            </select>
+            <small class="if-lock-note" id="t-card-lock-note">Auto-detected from the card number</small>
+          </div>
+          <div class="if-field">
+            <label class="if-label" for="cardExp" id="l-card-exp">Expiration <span aria-hidden="true">*</span></label>
+            <input type="text" id="cardExp" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/YY" oninput="onExpInput()">
+          </div>
+        </div>
+
+        <div class="if-row-2">
+          <div class="if-field">
+            <label class="if-label" for="cardCvv" id="l-card-cvv">CVV <span aria-hidden="true">*</span></label>
+            <input type="text" id="cardCvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="3 digits" oninput="this.value=this.value.replace(/\D/g,'').slice(0,4)">
+          </div>
+          <div class="if-field">
+            <label class="if-label" for="cardZip" id="l-card-zip">Billing ZIP <span aria-hidden="true">*</span></label>
+            <input type="text" id="cardZip" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="90210">
+          </div>
+        </div>
+
+        <label class="if-ack" for="cardAck">
+          <input type="checkbox" id="cardAck">
+          <span id="t-card-ack">I acknowledge that I have received a complete copy of this Authorization at the time I signed it, and that it was provided in the language primarily used during the transaction. <span aria-hidden="true">*</span></span>
+        </label>
+        <div class="err-msg" id="e-card" style="margin-top:10px">Please complete the card fields and acknowledgment.</div>
+      </div>
+    </div>
+    <button class="submit-btn" onclick="nextStep(4)"><span id="btn4-text">Review Application →</span></button>
+    <button class="back-btn" onclick="goBack(3)"><span id="back4-text">← Back</span></button>
+  </div>
+
+  <!-- STEP 4: Review & Submit -->
+  <div id="step5" style="display:none">
+    <div class="card fade-up">
+      <div class="card-title"><div class="card-title-icon">📋</div><span id="t-review">Review Your Application</span></div>
+
+      <div class="review-section">
+        <div class="review-label" id="rl-personal">Personal Information</div>
+        <div class="review-row"><span class="review-key" id="rk-name">Name</span><span class="review-val" id="rv-name">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-dob">Date of Birth</span><span class="review-val" id="rv-dob">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-ssn">SSN Last 4</span><span class="review-val" id="rv-ssn">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-addr">Address</span><span class="review-val" id="rv-addr">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-phone">Phone</span><span class="review-val" id="rv-phone">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-email">Email</span><span class="review-val" id="rv-email">—</span></div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-label" id="rl-loan">Loan Request</div>
+        <div class="review-row"><span class="review-key" id="rk-amt">Amount</span><span class="review-val" id="rv-amt" style="font-size:18px;font-weight:800;color:var(--green)">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-purpose">Purpose</span><span class="review-val" id="rv-purpose">—</span></div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-label" id="rl-employ">Employment</div>
+        <div class="review-row"><span class="review-key" id="rk-empst">Status</span><span class="review-val" id="rv-empst">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-emp">Employer</span><span class="review-val" id="rv-emp">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-inc">Monthly Income</span><span class="review-val" id="rv-inc">—</span></div>
+        <div class="review-row"><span class="review-key" id="rk-pay">Pay Frequency</span><span class="review-val" id="rv-pay">—</span></div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-label" id="rl-bank">Bank Verification</div>
+        <div class="review-row"><span class="review-key" id="rk-bank">Method</span><span class="review-val" id="rv-bank">—</span></div>
+      </div>
+
+      <div style="background:var(--gold-light);border:1px solid var(--gold);border-radius:10px;padding:12px 14px;font-size:12px;color:#7a5c00;margin-top:8px">
+        <span id="consent-text">By submitting this application, you authorize Cash Rocket Anaheim to verify your identity and banking information for the purpose of evaluating your loan application.</span>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="submitApplication()">
+      <span id="submit-btn-text">Submit Application →</span>
+    </button>
+    <button class="back-btn" onclick="goBack(4)"><span id="back5-text">← Back</span></button>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="card" id="success" style="display:none">
+    <div class="success-card show">
+      <div class="success-icon">✓</div>
+      <div class="success-title" id="success-title">Application Submitted!</div>
+      <div class="success-sub" id="success-sub">Thank you! We have received your application and are currently reviewing your information. You will be contacted shortly with a decision.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Plaid Link SDK -->
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+
+<script>
+// ══════════════════════════════════════════
+// CONFIG — update with your Railway URL
+// ══════════════════════════════════════════
+const API_BASE = window.BACKEND_URL || 'https://cashrocketanaheim-apply.onrender.com';
+
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
+let lang = 'en';
+let currentStep = 1;
+let plaidLinked = false;
+let plaidToken = null;
+let assetReportToken = null;
+let pdfBase64 = null;
+let pdfAllowed = true; // controlled by admin toggle in Firebase
+let selectedAmount = null;
+
+// ══════════════════════════════════════════
+// TRANSLATIONS
+// ══════════════════════════════════════════
+const T = {
+  en: {
+    'hdr-title':'Apply for a Payday Loan',
+    'hdr-sub':'Fast approval · Up to $255 · California residents only',
+    't-personal':'Personal Information','t-loan':'Loan Request',
+    't-employ':'Employment & Income','t-bank':'Bank Verification',
+    't-review':'Review Your Application',
+    'l-fname':'First Name','l-lname':'Last Name','l-dob':'Date of Birth',
+    'l-ssn':'SSN (Last 4)','l-address':'Street Address','l-city':'City',
+    'l-state':'State','l-zip':'ZIP Code','l-phone':'Phone','l-email':'Email',
+    'l-loanamt':'How much would you like to borrow?',
+    'l-purpose':'Loan Purpose','l-empstatus':'Employment Status',
+    'l-employer':'Employer / Income Source','l-income':'Monthly Net Income (after taxes)',
+    'l-payday':'Pay Frequency',
+    'bank-sub':'We need to verify your bank account to process your application.',
+    't-plaid-title':'Connect Bank Account','t-plaid-sub':'Instant & secure via Plaid',
+    't-pdf-title':'Upload Bank Statement','t-pdf-sub':'PDF from last 30 days',
+    'badge-recommended':'Recommended',
+    't-dz-title':'Drop your bank statement here','t-dz-sub':'PDF format only · Last 30 days',
+    'plaid-btn-text':'Connect with Plaid',
+    'btn1-text':'Continue to Employment →','btn2-text':'Continue to Bank Verification →',
+    'btn3-text':'Continue to Debit Card →','btn4-text':'Review Application →',
+    'submit-btn-text':'Submit Application →',
+    'back2-text':'← Back','back3-text':'← Back','back4-text':'← Back','back5-text':'← Back',
+    'rl-personal':'Personal Information','rl-loan':'Loan Request',
+    'rl-employ':'Employment','rl-bank':'Bank Verification',
+    'rk-name':'Name','rk-dob':'Date of Birth','rk-ssn':'SSN Last 4',
+    'rk-addr':'Address','rk-phone':'Phone','rk-email':'Email',
+    'rk-amt':'Amount','rk-purpose':'Purpose','rk-empst':'Status',
+    'rk-emp':'Employer','rk-inc':'Monthly Income','rk-pay':'Pay Frequency',
+    'rk-bank':'Method',
+    'sec-text':'256-bit SSL encrypted · Your information is secure',
+    'consent-text':'By submitting this application, you authorize Cash Rocket Anaheim to verify your identity and banking information for the purpose of evaluating your loan application.',
+    'success-title':'Application Submitted!',
+    'success-sub':'Thank you! We have received your application and are currently reviewing your information. You will be contacted shortly with a decision.',
+    'sl1':'Personal Info','sl2':'Employment','sl3':'Bank Verification','sl4':'Debit Card','sl5':'Review',
+    't-card':'Debit Card for Instant Funding',
+  },
+  es: {
+    'hdr-title':'Solicitar un Préstamo',
+    'hdr-sub':'Aprobación rápida · Hasta $255 · Solo residentes de California',
+    't-personal':'Información Personal','t-loan':'Solicitud de Préstamo',
+    't-employ':'Empleo e Ingresos','t-bank':'Verificación Bancaria',
+    't-review':'Revise Su Solicitud',
+    'l-fname':'Nombre','l-lname':'Apellido','l-dob':'Fecha de Nacimiento',
+    'l-ssn':'SSN (Últimos 4)','l-address':'Dirección','l-city':'Ciudad',
+    'l-state':'Estado','l-zip':'Código Postal','l-phone':'Teléfono','l-email':'Correo',
+    'l-loanamt':'¿Cuánto desea pedir prestado?',
+    'l-purpose':'Propósito del Préstamo','l-empstatus':'Estado de Empleo',
+    'l-employer':'Empleador / Fuente de Ingresos','l-income':'Ingreso Mensual Neto (después de impuestos)',
+    'l-payday':'Frecuencia de Pago',
+    'bank-sub':'Necesitamos verificar su cuenta bancaria para procesar su solicitud.',
+    't-plaid-title':'Conectar Cuenta Bancaria','t-plaid-sub':'Instantáneo y seguro via Plaid',
+    't-pdf-title':'Subir Estado de Cuenta','t-pdf-sub':'PDF de los últimos 30 días',
+    'badge-recommended':'Recomendado',
+    't-dz-title':'Arrastre su estado de cuenta aquí','t-dz-sub':'Solo formato PDF · Últimos 30 días',
+    'plaid-btn-text':'Conectar con Plaid',
+    'btn1-text':'Continuar a Empleo →','btn2-text':'Continuar a Verificación Bancaria →',
+    'btn3-text':'Continuar a Tarjeta de Débito →','btn4-text':'Revisar Solicitud →',
+    'submit-btn-text':'Enviar Solicitud →',
+    'back2-text':'← Regresar','back3-text':'← Regresar','back4-text':'← Regresar','back5-text':'← Regresar',
+    'rl-personal':'Información Personal','rl-loan':'Solicitud de Préstamo',
+    'rl-employ':'Empleo','rl-bank':'Verificación Bancaria',
+    'rk-name':'Nombre','rk-dob':'Fecha de Nacimiento','rk-ssn':'Últimos 4 SSN',
+    'rk-addr':'Dirección','rk-phone':'Teléfono','rk-email':'Correo',
+    'rk-amt':'Monto','rk-purpose':'Propósito','rk-empst':'Estado',
+    'rk-emp':'Empleador','rk-inc':'Ingreso Mensual','rk-pay':'Frecuencia de Pago',
+    'rk-bank':'Método',
+    'sec-text':'Encriptado SSL de 256 bits · Su información está segura',
+    'consent-text':'Al enviar esta solicitud, usted autoriza a Cash Rocket Anaheim a verificar su identidad e información bancaria para evaluar su solicitud de préstamo.',
+    'success-title':'¡Solicitud Enviada!',
+    'success-sub':'¡Gracias! Hemos recibido su solicitud y estamos revisando su información. Será contactado en breve con una decisión.',
+    'sl1':'Información','sl2':'Empleo','sl3':'Verificación','sl4':'Tarjeta de Débito','sl5':'Revisión',
+    't-card':'Tarjeta de Débito para Financiación Instantánea',
+  }
+};
+
+function setLang(l, btn) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.documentElement.lang = l;
+  // Update all translated elements
+  Object.entries(T[l]).forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  });
+  // Update data-en/data-es elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = l==='en' ? el.dataset.en : (el.dataset.es || el.dataset.en);
+  });
+}
+
+// ══════════════════════════════════════════
+// STEP NAVIGATION
+// ══════════════════════════════════════════
+function showStep(n) {
+  for (let i=1;i<=5;i++) {
+    const el = document.getElementById('step'+i);
+    if (el) el.style.display = i===n ? 'block' : 'none';
+  }
+  currentStep = n;
+  updateProgress(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateProgress(n) {
+  for (let i=1;i<=5;i++) {
+    const sn = document.getElementById('sn'+i);
+    const sl = document.getElementById('sl'+i);
+    if (!sn || !sl) continue;
+    if (i < n) { sn.className='step-num done'; sn.textContent='✓'; sl.className='step-label'; }
+    else if (i === n) { sn.className='step-num active'; sn.textContent=i; sl.className='step-label active'; }
+    else { sn.className='step-num todo'; sn.textContent=i; sl.className='step-label'; }
+  }
+  for (let i=1;i<=4;i++) {
+    const line = document.getElementById('line'+i);
+    if (line) line.className = 'step-line' + (i < n ? ' done' : '');
+  }
+}
+
+function goBack(toStep) { showStep(toStep); }
+
+function nextStep(from) {
+  if (!validateStep(from)) return;
+  // Step 4 -> 5: when we arrive at Review, populate with current data
+  if (from === 4) populateReview();
+  showStep(from+1);
+}
+
+// ══════════════════════════════════════════
+// VALIDATION
+// ══════════════════════════════════════════
+function validateStep(step) {
+  let valid = true;
+  function req(id) {
+    const el = document.getElementById(id);
+    const err = document.getElementById('e-'+id);
+    if (!el || !el.value.trim()) {
+      if (el) el.classList.add('error');
+      if (err) err.classList.add('show');
+      valid = false;
+    } else {
+      if (el) el.classList.remove('error');
+      if (err) err.classList.remove('show');
+    }
+  }
+  if (step===1) {
+    ['firstName','lastName','dob','address','city','zip'].forEach(req);
+    // SSN last 4
+    const ssn = document.getElementById('ssn');
+    const ssnErr = document.getElementById('e-ssn');
+    if (!ssn.value || ssn.value.length !== 4 || !/^\d{4}$/.test(ssn.value)) {
+      ssn.classList.add('error'); ssnErr.classList.add('show'); valid=false;
+    } else { ssn.classList.remove('error'); ssnErr.classList.remove('show'); }
+    // Phone
+    const ph = document.getElementById('phone');
+    const phErr = document.getElementById('e-phone');
+    if (!ph.value || ph.value.replace(/\D/g,'').length < 10) {
+      ph.classList.add('error'); phErr.classList.add('show'); valid=false;
+    } else { ph.classList.remove('error'); phErr.classList.remove('show'); }
+    // Email
+    const em = document.getElementById('email');
+    const emErr = document.getElementById('e-email');
+    if (!em.value || !em.value.includes('@')) {
+      em.classList.add('error'); emErr.classList.add('show'); valid=false;
+    } else { em.classList.remove('error'); emErr.classList.remove('show'); }
+    // Loan amount
+    if (!selectedAmount) {
+      document.getElementById('e-loanAmount').classList.add('show'); valid=false;
+    } else {
+      document.getElementById('e-loanAmount').classList.remove('show');
+    }
+  }
+  if (step===2) {
+    ['employmentStatus','payFrequency'].forEach(req);
+    req('monthlyIncome');
+    const empStatus = document.getElementById('employmentStatus').value;
+    if (empStatus && !['Government Benefits','Pension/Retirement'].includes(empStatus)) {
+      req('employer');
+    }
+  }
+  if (step===3) {
+    const bankErr = document.getElementById('e-bank');
+    if (!plaidLinked && !pdfBase64) {
+      bankErr.classList.add('show'); valid=false;
+    } else {
+      bankErr.classList.remove('show');
+    }
+  }
+  if (step===4) {
+    // Debit-card step is OPTIONAL. If the toggle is off, pass.
+    const optIn = document.getElementById('card-opt-in');
+    const err = document.getElementById('e-card');
+    if (err) err.classList.remove('show');
+    if (!optIn || !optIn.checked) return valid;
+    // If on, validate the card fields. On failure we set a single
+    // generic error (details visible inline via the BIN status line).
+    const first = (document.getElementById('cardFirst').value || '').trim();
+    const last  = (document.getElementById('cardLast').value || '').trim();
+    const pan   = (document.getElementById('cardNumber').value || '').replace(/\D/g,'');
+    const type  = document.getElementById('cardType').value;
+    const exp   = (document.getElementById('cardExp').value || '').replace(/\D/g,'');
+    const cvv   = (document.getElementById('cardCvv').value || '').replace(/\D/g,'');
+    const zip   = (document.getElementById('cardZip').value || '').trim();
+    const ack   = document.getElementById('cardAck').checked;
+    let okCard = true;
+    if (!first || !last) okCard = false;
+    if (pan.length < 13 || !_luhn(pan)) okCard = false;
+    if (!type) okCard = false;
+    if (exp.length < 4) okCard = false;
+    else {
+      const mm = parseInt(exp.slice(0,2),10), yy = parseInt(exp.slice(2,4),10);
+      if (!(mm>=1 && mm<=12)) okCard = false;
+      const end = new Date(2000+yy, mm, 0, 23, 59, 59);
+      if (end < new Date()) okCard = false;
+    }
+    if (cvv.length < 3 || cvv.length > 4) okCard = false;
+    if (!/^\d{5}(-?\d{4})?$/.test(zip)) okCard = false;
+    if (!ack) okCard = false;
+    // BIN lookup said it's credit? Block.
+    if (window._cifCardBIN && (window._cifCardBIN.type||'').toLowerCase() === 'credit') okCard = false;
+    if (!okCard) { if (err) err.classList.add('show'); valid = false; }
+  }
+  return valid;
+}
+
+// ──── Debit card step — helpers shared with cashrocketanaheim.com/if ────
+function toggleCardFields() {
+  const optIn = document.getElementById('card-opt-in');
+  document.getElementById('card-fields').style.display = optIn.checked ? 'block' : 'none';
+  if (!optIn.checked) {
+    document.getElementById('e-card').classList.remove('show');
+    const s = document.getElementById('card-status'); if (s) { s.textContent=''; s.style.color=''; }
+  }
+}
+function _luhn(d) {
+  if (!d) return false;
+  let s=0, flip=false;
+  for (let i=d.length-1; i>=0; i--) {
+    let n=parseInt(d[i],10);
+    if (flip) { n*=2; if (n>9) n-=9; }
+    s+=n; flip=!flip;
+  }
+  return s%10===0;
+}
+function _detectBrand(digits) {
+  if (!digits) return '';
+  if (digits[0]==='4') return 'Visa';
+  const two=digits.slice(0,2);
+  if (two==='34'||two==='37') return 'Amex';
+  if (['51','52','53','54','55'].indexOf(two)>=0) return 'MasterCard';
+  const four=parseInt(digits.slice(0,4)||'0',10);
+  if (four>=2221 && four<=2720) return 'MasterCard';
+  if (digits.slice(0,4)==='6011' || digits.slice(0,2)==='65') return 'Discover';
+  return '';
+}
+let _binDeb=null, _binChecked='';
+window._cifCardBIN = null;
+function onCardNumberInput() {
+  const el = document.getElementById('cardNumber');
+  const typeEl = document.getElementById('cardType');
+  let digits = el.value.replace(/\D/g,'');
+  const brand = _detectBrand(digits);
+  const cap = {Visa:16, MasterCard:16, Amex:15, Discover:16}[brand] || 16;
+  digits = digits.slice(0, cap);
+  if (brand === 'Amex') {
+    el.value = (digits.slice(0,4)
+      + (digits.length>4 ? ' '+digits.slice(4,10) : '')
+      + (digits.length>10 ? ' '+digits.slice(10,15) : '')).trim();
+  } else {
+    el.value = digits.replace(/(\d{4})(?=\d)/g, '$1 ');
+  }
+  if (brand) { typeEl.value = brand; typeEl.disabled = true; }
+  else { typeEl.value = ''; typeEl.disabled = false; }
+  _scheduleBinLookup(digits);
+}
+function onExpInput() {
+  const el = document.getElementById('cardExp');
+  const d = el.value.replace(/\D/g,'').slice(0,4);
+  el.value = d.length<=2 ? d : d.slice(0,2)+'/'+d.slice(2);
+}
+function _scheduleBinLookup(digits) {
+  const st = document.getElementById('card-status');
+  if (!digits || digits.length < 6) {
+    window._cifCardBIN = null; _binChecked='';
+    if (st) { st.textContent=''; st.style.color=''; }
+    return;
+  }
+  const bin = digits.slice(0,8);
+  if (bin === _binChecked) return;
+  clearTimeout(_binDeb);
+  _binDeb = setTimeout(() => _lookupBin(bin), 250);
+}
+function _lookupBin(bin) {
+  _binChecked = bin;
+  const st = document.getElementById('card-status');
+  if (st) { st.textContent='Checking card…'; st.style.color='#6b7c72'; }
+  fetch('https://lookup.binlist.net/'+bin, {headers:{'Accept-Version':'3'}})
+    .then(r => { if (!r.ok) throw new Error('http '+r.status); return r.json(); })
+    .then(data => {
+      const cur = document.getElementById('cardNumber').value.replace(/\D/g,'').slice(0,8);
+      if (cur !== bin) return;
+      window._cifCardBIN = data || {};
+      const type = (data.type || '').toLowerCase();
+      const scheme = (data.scheme || '').toLowerCase();
+      const bank = (data.bank && data.bank.name) ? data.bank.name : '';
+      const schemeLabel = scheme ? scheme.charAt(0).toUpperCase() + scheme.slice(1) : '';
+      const typeEl = document.getElementById('cardType');
+      const mapped = {visa:'Visa', mastercard:'MasterCard', amex:'Amex', 'american express':'Amex', discover:'Discover'}[scheme];
+      if (mapped) { typeEl.value = mapped; typeEl.disabled = true; }
+      if (type === 'credit') {
+        st.textContent = '⚠  This looks like a CREDIT card. Please enter a debit card.';
+        st.style.color = '#8a1f1f';
+      } else if (type === 'debit' || type === 'prepaid') {
+        st.textContent = '✓  ' + schemeLabel + ' ' + type + (bank ? ' · ' + bank : '');
+        st.style.color = '#0a5d2e';
+      } else if (schemeLabel) {
+        st.textContent = schemeLabel + (bank ? ' · ' + bank : '');
+        st.style.color = '#3a4a45';
+      } else {
+        st.textContent = ''; st.style.color = '';
+      }
+    })
+    .catch(() => {
+      window._cifCardBIN = null;
+      if (st) { st.textContent=''; st.style.color=''; }
+    });
+}
+
+// ══════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════
+function selectAmount(amt, btn) {
+  selectedAmount = amt;
+  document.getElementById('loanAmount').value = amt;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('e-loanAmount').classList.remove('show');
+}
+
+function toggleEmployer() {
+  const s = document.getElementById('employmentStatus').value;
+  const ef = document.getElementById('employer-field');
+  ef.style.display = ['Government Benefits','Pension/Retirement'].includes(s) ? 'none' : 'block';
+}
+
+function selectBank(type, el) {
+  document.querySelectorAll('.bank-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('plaid-area').classList.toggle('show', type==='plaid');
+  document.getElementById('upload-area').classList.toggle('show', type==='pdf');
+  document.getElementById('e-bank').classList.remove('show');
+}
+
+function handlePDF(input) {
+  const f = input.files[0];
+  if (!f) return;
+  const fr = new FileReader();
+  fr.onload = () => {
+    pdfBase64 = fr.result.split(',')[1];
+    const fr2 = document.getElementById('file-ready');
+    fr2.style.display = 'flex';
+    document.getElementById('file-name').textContent = f.name;
+    document.getElementById('e-bank').classList.remove('show');
+  };
+  fr.readAsDataURL(f);
+}
+
+// ══════════════════════════════════════════
+// PLAID
+// ══════════════════════════════════════════
+async function launchPlaid() {
+  const btn = document.getElementById('plaid-btn');
+  const status = document.getElementById('plaid-status');
+  btn.disabled = true;
+  btn.classList.add('loading');
+  status.className = 'plaid-status';
+  try {
+    const r = await fetch(`${API_BASE}/plaid/link-token`);
+    const d = await r.json();
+    if (!d.link_token) throw new Error('Could not get link token');
+    const handler = Plaid.create({
+      token: d.link_token,
+      onSuccess: async (public_token, metadata) => {
+        status.className = 'plaid-status ok';
+        status.textContent = lang==='en' ? '⟳ Connecting to your bank...' : '⟳ Conectando a su banco...';
+        status.style.display = 'flex';
+        try {
+          const ex = await fetch(`${API_BASE}/plaid/exchange`, {
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({public_token})
+          });
+          const exd = await ex.json();
+          assetReportToken = exd.asset_report_token;
+          plaidLinked = true;
+          btn.classList.remove('loading');
+          btn.classList.add('connected');
+          document.getElementById('plaid-btn-text').textContent = lang==='en' ? '✓ Bank Connected!' : '✓ ¡Banco Conectado!';
+          status.textContent = lang==='en'
+            ? `✓ Connected: ${metadata.institution?.name || 'Your bank'}`
+            : `✓ Conectado: ${metadata.institution?.name || 'Su banco'}`;
+          document.getElementById('e-bank').classList.remove('show');
+        } catch(e) {
+          throw new Error('Exchange failed: '+e.message);
+        }
+      },
+      onExit: (err) => {
+        btn.disabled = false;
+        btn.classList.remove('loading');
+        if (err) {
+          status.className = 'plaid-status err';
+          status.textContent = lang==='en' ? 'Connection failed. Please try again.' : 'Conexión fallida. Intente de nuevo.';
+        }
+      }
+    });
+    handler.open();
+  } catch(e) {
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    status.className = 'plaid-status err';
+    status.textContent = (lang==='en' ? 'Error: ' : 'Error: ') + e.message;
+    status.style.display = 'block';
+  }
+}
+
+// ══════════════════════════════════════════
+// REVIEW
+// ══════════════════════════════════════════
+function populateReview() {
+  const v = id => document.getElementById(id)?.value || '';
+  document.getElementById('rv-name').textContent = `${v('firstName')} ${v('lastName')}`;
+  document.getElementById('rv-dob').textContent = v('dob');
+  document.getElementById('rv-ssn').textContent = `***-**-${v('ssn')}`;
+  document.getElementById('rv-addr').textContent = `${v('address')}, ${v('city')}, ${v('state')} ${v('zip')}`;
+  document.getElementById('rv-phone').textContent = v('phone');
+  document.getElementById('rv-email').textContent = v('email');
+  document.getElementById('rv-amt').textContent = selectedAmount ? `$${selectedAmount}` : '—';
+  document.getElementById('rv-purpose').textContent = v('loanPurpose') || (lang==='en'?'Not specified':'No especificado');
+  document.getElementById('rv-empst').textContent = v('employmentStatus');
+  document.getElementById('rv-emp').textContent = v('employer') || '—';
+  document.getElementById('rv-inc').textContent = v('monthlyIncome') ? `$${v('monthlyIncome')}` : '—';
+  document.getElementById('rv-pay').textContent = v('payFrequency');
+  document.getElementById('rv-bank').textContent = plaidLinked
+    ? (lang==='en'?'Plaid (Connected)':'Plaid (Conectado)')
+    : (lang==='en'?'PDF Upload':'Subida de PDF');
+}
+
+// ══════════════════════════════════════════
+// SUBMIT
+// ══════════════════════════════════════════
+// Direct HttpApi URL for the instant-funding vault. Card data goes
+// browser → AWS Lambda → KMS-encrypted DynamoDB; never touches the
+// Flask server. Same endpoint as cashrocketanaheim.com/if.
+const IF_SUBMIT_URL = 'https://anh066l1wf.execute-api.us-east-1.amazonaws.com/dev/api/if/submit';
+
+async function submitApplication() {
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.classList.add('loading');
+
+  const v = id => document.getElementById(id)?.value || '';
+  const formData = {
+    firstName: v('firstName'), lastName: v('lastName'),
+    dob: v('dob'), ssn: v('ssn'),
+    address: v('address'), city: v('city'), state: v('state'), zip: v('zip'),
+    phone: v('phone'), email: v('email'),
+    loanAmount: selectedAmount, loanPurpose: v('loanPurpose'),
+    employmentStatus: v('employmentStatus'), employer: v('employer'),
+    monthlyIncome: v('monthlyIncome'), payFrequency: v('payFrequency'),
+    bankMethod: plaidLinked ? 'Plaid' : 'PDF Upload',
+    language: lang,
+  };
+  const wantsCard = document.getElementById('card-opt-in')?.checked === true;
+
+  try {
+    // 1) Persist the application. Card fields are NOT in this body.
+    const resp = await fetch(`${API_BASE}/submit`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        formData,
+        pdfBase64: pdfBase64 || '',
+        assetReportToken: assetReportToken || '',
+        optedInInstantFunding: !!wantsCard,
+      })
+    });
+    const d = await resp.json();
+    if (!d.success) throw new Error(d.error || 'Submission failed');
+    const fbId = d.firebaseId || d.firebase_id || '';
+
+    // 2) If the customer opted into a debit card, send the card
+    //    straight from the browser to the IF vault. This must not
+    //    block the success screen — if the IF side errors, we log
+    //    and press on so staff can follow up.
+    if (wantsCard) {
+      try {
+        const exp = (v('cardExp') || '').replace(/\D/g,'');
+        const mm = parseInt(exp.slice(0,2),10);
+        const yy = parseInt(exp.slice(2,4),10);
+        const cardPayload = {
+          BorrowerFirstName: v('firstName'),
+          BorrowerLastName:  v('lastName'),
+          CardholderFirstName: v('cardFirst'),
+          CardholderLastName:  v('cardLast'),
+          CardNumber: (v('cardNumber') || '').replace(/\D/g,''),
+          CardType: v('cardType'),
+          ExpMonth: mm,
+          ExpYear: 2000 + yy,
+          CVV: (v('cardCvv') || '').replace(/\D/g,''),
+          BillingZip: v('cardZip'),
+          Acknowledged: document.getElementById('cardAck').checked,
+          SubmittedAt: new Date().toISOString(),
+          applicationFbId: fbId,
+        };
+        const ifResp = await fetch(IF_SUBMIT_URL, {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(cardPayload),
+        });
+        const ifData = await ifResp.json().catch(() => ({}));
+        if (ifResp.ok && ifData.submissionId && fbId) {
+          // 3) Link the IF submission back onto the Firebase app.
+          fetch(`${API_BASE}/link-if/${encodeURIComponent(fbId)}`, {
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ifSubmissionId: ifData.submissionId}),
+          }).catch(() => {/* non-blocking */});
+        } else {
+          console.warn('IF vault submission failed', ifResp.status, ifData);
+        }
+      } catch(ifErr) {
+        console.warn('IF vault submission threw', ifErr);
+      }
+    }
+
+    // Success UI — hide all 5 steps + progress bar.
+    for (let i=1;i<=5;i++) {
+      const el = document.getElementById('step'+i);
+      if (el) el.style.display = 'none';
+    }
+    document.getElementById('progress').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  } catch(e) {
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    alert(lang==='en'
+      ? 'Submission failed: '+e.message+'. Please try again.'
+      : 'Error al enviar: '+e.message+'. Por favor intente de nuevo.');
+  }
+}
+
+// ══════════════════════════════════════════
+// ADMIN: check if PDF upload is allowed
+// ══════════════════════════════════════════
+async function checkSettings() {
+  try {
+    const r = await fetch(`${API_BASE}/admin/settings`);
+    const d = await r.json();
+    pdfAllowed = d.allowPdfUpload !== false; // default true
+    if (!pdfAllowed) {
+      const pdfOpt = document.getElementById('opt-pdf');
+      pdfOpt.classList.add('disabled');
+      const badge = document.getElementById('badge-upload');
+      badge.textContent = lang==='en' ? 'Unavailable' : 'No disponible';
+      badge.style.display = 'inline-block';
+    }
+  } catch(e) { /* use default */ }
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+window.onload = () => {
+  checkSettings();
+  // Drag and drop
+  const dz = document.getElementById('dz');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('over')});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+  dz.addEventListener('drop',e=>{
+    e.preventDefault();dz.classList.remove('over');
+    const f=e.dataTransfer.files[0];
+    if(f&&f.type==='application/pdf'){
+      document.getElementById('pdf-input').files = e.dataTransfer.files;
+      handlePDF(document.getElementById('pdf-input'));
+    }
+  });
+};
+</script>
+</body>
+</html>

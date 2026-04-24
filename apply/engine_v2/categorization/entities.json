@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "description": "Merchant registry: one source of truth per merchant, per direction. Credit-side and debit-side categories are distinct. null means the direction is implausible (e.g., Capital One CC incoming with no balance-due pattern).",
+    "version": "0.0.1",
+    "seeded_from_cases": ["jorge_monroy", "michelle_anderson", "danitza_olmedo", "sherrie_craig"]
+  },
+  "lenders_and_loan_services": {
+    "LA-Finance LLC":        { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Atlasfinancial":        { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Atlas Financial":       { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Upstart":               { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Cross River Bank":      { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Sunshine Loans":        { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "SUNSHINELOAN":          { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Together Loans":        { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Snap Finance":          { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Snaploan":              { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Westlake":              { "credit": null,                "debit": "loan_payment" },
+    "Capital One":           { "credit": null,                "debit": "loan_payment" },
+    "Flexible Finance":      { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Standard Bow":          { "credit": "loan_proceeds",     "debit": "loan_payment" },
+    "Possible Finance":      { "credit": "fintech_advance",   "debit": "fintech_repayment" }
+  },
+  "fintech_advance_apps": {
+    "Earnin":                { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Brigit":                { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Dave Inc":              { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "DAVE INC":              { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Cleo":                  { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "MyPay":                 { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "MYPAY":                 { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "My Pay":                { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Empower":               { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Tilt":                  { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Empower Tilt":          { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Credit Genie":          { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Advance America":       { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Grant":                 { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "JOINGERALD":            { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Gerald":                { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "MoneyLion":             { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "ML PLUS LLC":           { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "INSTACASH":             { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "Albert":                { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "ATM.com":               { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "ATM_COM":               { "credit": "fintech_advance",   "debit": "fintech_repayment" },
+    "ATM-com":               { "credit": "fintech_advance",   "debit": "fintech_repayment" }
+  },
+  "bnpl": {
+    "Klarna":                { "credit": "bnpl_refund",       "debit": "bnpl_payment" },
+    "Afterpay":              { "credit": "bnpl_refund",       "debit": "bnpl_payment" },
+    "Affirm":                { "credit": "bnpl_refund",       "debit": "bnpl_payment" }
+  },
+  "cif_self_reference": {
+    "CASH IN FLASH":         { "credit": "loan_proceeds_cif", "debit": "loan_payment_cif" }
+  },
+  "internal_transfers": {
+    "Way2Save":                            { "credit": "internal_transfer", "debit": "internal_transfer" },
+    "KEEPTHECHANGE":                       { "credit": "internal_transfer", "debit": "internal_transfer" },
+    "Online Banking transfer to CHK":      { "credit": "internal_transfer", "debit": "internal_transfer" },
+    "Automatic Transfer from CHK":         { "credit": "internal_transfer", "debit": "internal_transfer" },
+    "Varo Bank":                           { "credit": "internal_transfer", "debit": "internal_transfer" },
+    "VAROTRSFR":                           { "credit": "internal_transfer", "debit": "internal_transfer" },
+    "Online Transfer to Way2Save":         { "credit": null,                "debit": "internal_transfer" },
+    "Online Transfer From Way2Save":       { "credit": "internal_transfer", "debit": null }
+  },
+  "p2p": {
+    "Zelle":                 { "credit": "p2p_received",      "debit": "p2p_sent" },
+    "Venmo":                 { "credit": "p2p_received",      "debit": "p2p_sent" },
+    "Cash App":              { "credit": "p2p_received",      "debit": "p2p_sent" },
+    "CASH APP":              { "credit": "p2p_received",      "debit": "p2p_sent" },
+    "Apple Cash":            { "credit": "p2p_received",      "debit": "p2p_sent" },
+    "APPLE CASH":            { "credit": "p2p_received",      "debit": "p2p_sent" },
+    "PayPal":                { "credit": "p2p_received",      "debit": "p2p_sent" },
+    "Remitly":               { "credit": null,                "debit": "p2p_sent" }
+  },
+  "atm": {
+    "ATM CASH DEPOSIT":      { "credit": "cash_deposit",      "debit": null },
+    "ATM Cash Deposit":      { "credit": "cash_deposit",      "debit": null },
+    "ATM DEP":               { "credit": "cash_deposit",      "debit": null },
+    "ATM Withdrawal":        { "credit": null,                "debit": "atm" },
+    "ATM WITHDRAWAL":        { "credit": null,                "debit": "atm" }
+  },
+  "payroll_known_employers": {
+    "Terraza Court":         { "credit": "payroll",           "debit": null },
+    "KERN SUPT SCHOOL":      { "credit": "payroll",           "debit": null },
+    "LA COUNTY PAYROLL":     { "credit": "payroll",           "debit": null }
+  },
+  "gig_income": {
+    "UBER PRO CARD":         { "credit": "gig_income",        "debit": null },
+    "UBER ":                 { "credit": "gig_income",        "debit": null }
+  },
+  "account_verification_noise": {
+    "Bright Money":          { "credit": "account_verification", "debit": "account_verification" },
+    "ACCTVERIFY":            { "credit": "account_verification", "debit": "account_verification" },
+    "Acctverify":            { "credit": "account_verification", "debit": "account_verification" },
+    "MICROVERIFICATION":     { "credit": "account_verification", "debit": "account_verification" },
+    "Microverification":     { "credit": "account_verification", "debit": "account_verification" },
+    "ACCTCHECK":             { "credit": "account_verification", "debit": "account_verification" },
+    "ACCTSTATUS":            { "credit": "account_verification", "debit": "account_verification" },
+    "CG Auth":               { "credit": "account_verification", "debit": "account_verification" }
+  },
+  "fees": {
+    "Overdraft Fee":         { "credit": null,                "debit": "fee" },
+    "Non-Wells Fargo ATM Fee": { "credit": null,              "debit": "fee" },
+    "Monthly Maintenance Fee": { "credit": null,              "debit": "fee" }
+  }
+}

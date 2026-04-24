@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" width="360" height="88" role="img" aria-label="Cash Rocket Anaheim">
+  <title>Cash Rocket Anaheim</title>
+  <defs>
+    <linearGradient id="ce-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#003DA5"/>
+      <stop offset="100%" stop-color="#14377C"/>
+    </linearGradient>
+  </defs>
+  <!-- Navy badge with yellow sunburst + river mark -->
+  <g transform="translate(6,14)">
+    <rect x="0" y="0" width="64" height="60" rx="14" fill="url(#ce-bg)"/>
+    <!-- yellow sunburst (stars-and-stripes nod) -->
+    <circle cx="32" cy="30" r="17" fill="#FFC52B"/>
+    <!-- river waves over the sunburst -->
+    <path d="M10 44 Q20 38 30 44 T50 44 T54 44" fill="none" stroke="#FFC52B" stroke-width="2.6" stroke-linecap="round" opacity=".95"/>
+    <path d="M10 50 Q20 44 30 50 T50 50" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+    <!-- dollar inside the sunburst -->
+    <text x="32" y="36" text-anchor="middle" font-family="'Poppins','Helvetica Neue',Arial,sans-serif" font-size="17" font-weight="900" fill="#14377C">$</text>
+  </g>
+  <!-- Wordmark -->
+  <g transform="translate(82,0)">
+    <text x="0" y="40" font-family="'Poppins','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#14377C" letter-spacing="-.3">Cash Rocket</text>
+    <text x="0" y="66" font-family="'Poppins','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="600" fill="#003DA5" letter-spacing="6">ANAHEIM</text>
+    <rect x="0" y="72" width="52" height="3" rx="1.5" fill="#FFC52B"/>
+  </g>
+</svg>

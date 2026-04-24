@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: cashrocketanaheim-apply
+    env: python
+    buildCommand: pip install --upgrade pip
+    startCommand: python server.py
+    envVars:
+      - key: PLAID_CLIENT_ID
+        value: 691b887592e1e300248c43af
+      - key: PLAID_SECRET
+        value: f1ea4f105261ab1e3f9c05d01b815f
+      - key: PLAID_ENV
+        value: production
+      - key: ANTHROPIC_API_KEY
+        sync: false
