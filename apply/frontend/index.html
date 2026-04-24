@@ -10,6 +10,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<!-- Marketing-site CSS — loaded cross-origin so the header/nav/mobile menu
+     matches cashrocketanaheim.com pixel-for-pixel and picks up future
+     updates automatically. -->
+<link rel="stylesheet" href="https://cashrocketanaheim.com/css/style.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,144 +38,13 @@
      origin and can't share /css/style.css.
      ═══════════════════════════════════════════════════════════════════ -->
 <style>
-/* Font baseline — Inter to match the marketing site */
+/* Font baseline — Inter to match the marketing site. Everything else
+   (header, nav, mobile menu, logo sizing, buttons) comes from the
+   cashrocketanaheim.com/css/style.css loaded above so this page stays
+   pixel-perfect in sync with the marketing site automatically. */
 body, .top-banner, .site-header, .site-header *, .btn-apply, .nav-item > a {
   font-family: 'Inter','Poppins','Helvetica Neue',Arial,sans-serif !important;
   letter-spacing: -0.01em;
-}
-
-/* TOP BANNER */
-.top-banner {
-  background: #003C71;
-  color: #FFFFFF;
-  border-bottom: 3px solid #FF7900;
-  text-align: center;
-  padding: 10px 0;
-  font-weight: 600;
-  font-size: 14px;
-}
-.top-banner .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.top-banner p { margin: 0; }
-.top-banner .banner-desktop { display: block; }
-.top-banner .banner-mobile  { display: none; }
-@media (max-width: 600px) {
-  .top-banner .banner-desktop { display: none; }
-  .top-banner .banner-mobile  { display: block; }
-  .top-banner { font-size: 13px; }
-}
-
-/* SITE HEADER — sticky white bar, soft shadow */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: #FFFFFF;
-  border-bottom: 1px solid #E6EAF0;
-  box-shadow: 0 1px 2px rgba(15,23,42,.04);
-}
-.site-header .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px;
-  min-height: 104px;
-  gap: 20px;
-}
-
-/* LOGO */
-.site-header .logo { display: inline-flex; align-items: center; flex-shrink: 0; }
-.site-header .logo img {
-  height: 80px;
-  max-height: 80px;
-  width: auto;
-  max-width: none;
-  object-fit: contain;
-  display: block;
-}
-
-/* DESKTOP NAV */
-.site-header .main-nav { display: block; }
-.site-header .nav-list {
-  display: flex;
-  gap: 4px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.site-header .nav-item > a {
-  color: #0F172A;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color .15s ease, color .15s ease;
-  display: inline-block;
-}
-.site-header .nav-item > a:hover { background: #EFF3FC; color: #003C71; }
-.site-header .nav-item > a[aria-current="page"] { color: #003C71; }
-
-/* APPLY NOW pill — yellow with navy text */
-.site-header .header-actions { display: flex; align-items: center; gap: 12px; }
-.site-header .btn-apply,
-.btn-apply {
-  background: #FF7900;
-  color: #00254E;
-  font-weight: 800;
-  padding: 12px 26px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 15px;
-  border: 2px solid #FF7900;
-  box-shadow: 0 6px 16px rgba(255,197,43,.40);
-  transition: background-color .15s ease, transform .12s ease, box-shadow .15s ease;
-  white-space: nowrap;
-  letter-spacing: .01em;
-  display: inline-block;
-}
-.site-header .btn-apply:hover,
-.btn-apply:hover {
-  background: #D96900;
-  border-color: #D96900;
-  color: #00254E;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(224,168,0,.45);
-}
-
-/* MOBILE — identical to cashrocketanaheim.com (polish v17 + v20 + v21).
-   Logo actually grows ABOVE the desktop 80px on phones (92 / 84 / 76)
-   because the nav is gone so there's more horizontal room. max-width
-   safety prevents the logo from crashing into the Apply Now pill. */
-@media (max-width: 860px) {
-  .site-header .btn-apply { padding: 10px 18px; font-size: 14px; }
-}
-@media (max-width: 768px) {
-  .site-header .main-nav { display: none; }
-  .site-header .header-inner { min-height: 104px; padding: 10px 20px; }
-  .site-header .logo img {
-    height: 92px;
-    max-height: 92px;
-    max-width: calc(100vw - 180px);
-  }
-}
-@media (max-width: 500px) {
-  .site-header .header-inner { min-height: 96px; padding: 10px 16px; }
-  .site-header .logo img {
-    height: 84px;
-    max-height: 84px;
-    max-width: calc(100vw - 150px);
-  }
-}
-@media (max-width: 420px) {
-  .site-header .header-inner { min-height: 88px; }
-  .site-header .logo img {
-    height: 76px;
-    max-height: 76px;
-    max-width: calc(100vw - 135px);
-  }
-  .site-header .btn-apply { padding: 9px 14px; font-size: 13px; }
 }
 </style>
 
@@ -183,9 +56,9 @@ body, .top-banner, .site-header, .site-header *, .btn-apply, .nav-item > a {
   </div>
 </div>
 
-<!-- HEADER -->
+<!-- HEADER — verbatim port from cashrocketanaheim.com incl. mobile menu -->
 <header class="site-header" id="site-header">
-  <div class="header-inner">
+  <div class="header-inner container">
     <a href="https://cashrocketanaheim.com/" class="logo" aria-label="Cash Rocket Anaheim home">
       <img src="https://cashrocketanaheim.com/images/logo.png" alt="Cash Rocket Anaheim" width="320" height="80" fetchpriority="high">
     </a>
@@ -202,7 +75,37 @@ body, .top-banner, .site-header, .site-header *, .btn-apply, .nav-item > a {
     <div class="header-actions">
       <a href="https://apply.cashrocketanaheim.com/?source_site=cashrocket_anaheim&amp;utm_source=cashrocketanaheim.com&amp;utm_medium=referral&amp;utm_campaign=payday_anaheim" class="btn-apply">Apply Now</a>
     </div>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <div class="mobile-menu-header">
+        <a href="https://cashrocketanaheim.com/" class="mobile-menu-logo">
+          <img src="https://cashrocketanaheim.com/images/logo.png" alt="Cash Rocket Anaheim" width="224" height="56">
+        </a>
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item"><a href="https://cashrocketanaheim.com/">Payday Loans</a></li>
+        <li class="mobile-nav-item"><a href="https://cashrocketanaheim.com/rates-and-fees/">Rates &amp; Fees</a></li>
+        <li class="mobile-nav-item"><a href="https://cashrocketanaheim.com/#faq-section">FAQ</a></li>
+        <li class="mobile-nav-item"><a href="https://cashrocketanaheim.com/contact/">Contact</a></li>
+      </ul>
+      <div class="mobile-menu-extra">
+        <div class="mobile-btn-row">
+          <a href="https://apply.cashrocketanaheim.com/?source_site=cashrocket_anaheim&amp;utm_source=cashrocketanaheim.com&amp;utm_medium=referral&amp;utm_campaign=payday_anaheim" class="btn-apply">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-menu-overlay" id="mobile-overlay"></div>
 </header>
 
 
@@ -617,8 +520,30 @@ body, .top-banner, .site-header, .site-header *, .btn-apply, .nav-item > a {
 <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
 <script src="script.js"></script>
 
-
-
-
+<!-- Mobile menu toggle — ported from cashrocketanaheim.com/js/main.js -->
+<script>
+(function(){
+  var header=document.getElementById('site-header');
+  if(header){
+    var sentinel=document.createElement('div');
+    sentinel.style.cssText='position:absolute;top:0;left:0;width:1px;height:10px;pointer-events:none';
+    sentinel.setAttribute('aria-hidden','true');
+    document.body.prepend(sentinel);
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){header.classList.toggle('scrolled',!e[0].isIntersecting);},{threshold:0}).observe(sentinel);
+    }
+  }
+  var toggle=document.getElementById('menu-toggle');
+  var menu=document.getElementById('mobile-menu');
+  var overlay=document.getElementById('mobile-overlay');
+  var closeBtn=document.getElementById('mobile-menu-close');
+  if(!toggle||!menu||!overlay)return;
+  function open(){toggle.classList.add('active');menu.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){toggle.classList.remove('active');menu.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+  toggle.addEventListener('click',function(){menu.classList.contains('open')?close():open();});
+  overlay.addEventListener('click',close);
+  if(closeBtn)closeBtn.addEventListener('click',close);
+})();
+</script>
 </body>
 </html>
