@@ -5368,3 +5368,52 @@ h1, h2, h3, h4, h5, h6 {
   .pre-footer     { padding: 96px 0 !important; }
   .testimonials   { padding-top: 80px !important; }
 }
+
+
+/* ═════════════════════════════════════════════════════════════════════
+   LOGO SIZING v15 — match CER's rendered pixel width
+   Cash Rocket logo is 4:1; CER is 3.56:1. At the same CSS height the
+   CRA logo renders ~12% wider. Heights reduced by 3.56/4.00 = 0.89 so
+   the logo takes up the same horizontal space as CER's live logo.
+   ═════════════════════════════════════════════════════════════════════ */
+.site-header .logo img {
+  height: 64px !important;
+  max-height: 64px !important;
+  min-height: 40px !important;
+}
+.mobile-menu-logo img,
+.mobile-menu-header img {
+  height: 48px !important;
+  max-height: 48px !important;
+}
+.footer-bottom-left img,
+.pre-footer img {
+  height: 56px !important;
+  max-height: 56px !important;
+}
+
+@media (max-width: 768px) {
+  .site-header .logo img,
+  .cer-header .cer-logo img {
+    height: 80px !important;
+    max-height: 80px !important;
+  }
+}
+@media (max-width: 500px) {
+  .site-header .logo img,
+  .cer-header .cer-logo img {
+    height: 72px !important;
+    max-height: 72px !important;
+  }
+}
+@media (max-width: 480px) {
+  .mobile-menu-logo img { height: 40px !important; max-height: 40px !important; }
+  .footer-bottom-left img, .pre-footer img { height: 46px !important; max-height: 46px !important; }
+}
+@media (max-width: 420px) {
+  .site-header .logo img,
+  .cer-header .cer-logo img {
+    height: 64px !important;
+    max-height: 64px !important;
+  }
+}
