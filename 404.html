@@ -10,12 +10,6 @@
   <link rel="apple-touch-icon" href="/images/favicon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#FF7900">
-  <link rel="preload" href="/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/poppins-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/poppins-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/poppins-400-ext.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/css/style.css?v=14" as="style">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,24 +61,27 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '[[GA4_ID]]', {
-      'send_page_view': true,
-      'cookie_flags': 'SameSite=None;Secure'
-    });
-
-    // Defer gtag.js until first user interaction (keeps LCP fast, clean PageSpeed)
-    (function(){
-      var loaded=false;
-      function load(){
-        if(loaded)return;loaded=true;
-        var s=document.createElement('script');
-        s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=[[GA4_ID]]';
-        document.head.appendChild(s);
-      }
-      ['scroll','mousemove','touchstart','keydown','pointerdown'].forEach(function(e){
-        window.addEventListener(e,load,{once:true,passive:true});
+    var GA4_ID = '[[GA4_ID]]';
+    if (GA4_ID && GA4_ID.indexOf('[[') !== 0) {
+      gtag('config', GA4_ID, {
+        'send_page_view': true,
+        'cookie_flags': 'SameSite=None;Secure'
       });
-    })();
+
+      // Defer gtag.js until first user interaction (keeps LCP fast, clean PageSpeed)
+      (function(){
+        var loaded=false;
+        function load(){
+          if(loaded)return;loaded=true;
+          var s=document.createElement('script');
+          s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID;
+          document.head.appendChild(s);
+        }
+        ['scroll','mousemove','touchstart','keydown','pointerdown'].forEach(function(e){
+          window.addEventListener(e,load,{once:true,passive:true});
+        });
+      })();
+    }
   </script>
   <script src="/js/main.js" defer></script>
   <script src="/js/analytics.js" defer></script>

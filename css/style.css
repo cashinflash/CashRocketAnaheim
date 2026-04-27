@@ -41,7 +41,7 @@ input { font-family: inherit; font-size: 16px; /* prevents iOS zoom on focus */ 
 .underline-accent {
   position: relative;
   display: inline-block;
-  color: #FF7900;
+  color: #B85800;
 }
 .underline-accent::after {
   content: '';
@@ -699,7 +699,7 @@ input { font-family: inherit; font-size: 16px; /* prevents iOS zoom on focus */ 
   overflow: hidden;
 }
 .social-proof .section-heading { margin-bottom: 48px; color: #fff; }
-.social-proof .underline-accent { color: #FF7900; }
+.social-proof .underline-accent { color: #B85800; }
 .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .proof-card {
   padding: 40px 28px;
@@ -1364,7 +1364,7 @@ input { font-family: inherit; font-size: 16px; /* prevents iOS zoom on focus */ 
 }
 .calc-row span:last-child { font-weight: 600; color: #00254E; }
 .calc-total { font-size: 1.05rem; }
-.calc-total span:last-child { color: #FF7900; font-weight: 700; }
+.calc-total span:last-child { color: #B85800; font-weight: 700; }
 .calc-due span:last-child { font-size: .85rem; font-weight: 500; line-height: 1.3; text-align: center; }
 .calc-due small { font-size: .75rem; color: #666; font-weight: 400; }
 .calc-divider {

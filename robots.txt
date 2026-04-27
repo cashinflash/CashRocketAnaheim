@@ -1,3 +1,5 @@
-# Pre-launch embargo — counsel must sign off before indexing is re-enabled.
+# Cash Rocket Anaheim is now publicly indexable.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://cashrocketanaheim.com/sitemap.xml
